@@ -23,8 +23,9 @@ function getLocation() {
 
 function showPosition(position) {
   var latlon = position.coords.latitude + "," + position.coords.longitude;
-  var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="
-  +latlon+"&zoom=18&size=1024x768&key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU";
+ // var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="
+ // +latlon+"&zoom=18&size=1024x768&key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU";
+  var img_url = "https://media.geeksforgeeks.org/wp-content/uploads/20190506164011/logo3.png";
   document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"' width=auto>";
   document.getElementById("map-link").innerHTML = latlon;
 }
