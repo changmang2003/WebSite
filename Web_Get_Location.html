@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <p id="demo">Click the button to get your position.</p>
 
 <button onclick="getLocation()">Get Location</button>
@@ -11,8 +11,11 @@
 <div id="mapholder" alt=""></div>
 
 <script>
-var x = document.getElementById("demo");
 
+var x = document.getElementById("demo");
+var getUrlString = location.href;
+var url = new URL(getUrlString);
+ 
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition, showError);
@@ -23,12 +26,49 @@ function getLocation() {
 
 function showPosition(position) {
   var latlon = position.coords.latitude + "," + position.coords.longitude;
+  const date = new Date(position.timestamp )
+  var bubble  
+  if (url.searchParams.get("punch")=="work"){
+    bubble = 
+    {
+      "events":{
+        "type":"message",        
+        "message": {
+          "type":"work",
+          "latitude": position.coords.latitude,
+          "longitude": position.coords.longitude,
+          "timestamp": position.timestamp
+        }
+      }
+    };
+  } else {
+     bubble = 
+    {
+      "events":{
+        "type":"message",        
+        "message": {
+          "type":"outwork",
+          "latitude": position.coords.latitude,
+          "longitude": position.coords.longitude,
+          "timestamp": position.timestamp
+        }
+      }
+    };
+  } 
+    
   var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="
-  +latlon+"&zoom=18&size=1024x768&key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU";
+  +latlon+"&zoom=18&size=400x300&key=AIzaSyDWeGQefxkYEIgRWe3J-B3ukCEs6Xv4tfo";
   //var img_url = "https://media.geeksforgeeks.org/wp-content/uploads/20190506164011/logo3.png";
-  document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"' width=auto>";
-  document.getElementById("map-link").innerHTML = latlon;
-  
+  document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
+  document.getElementById("map-link").innerHTML = JSON.parse(bubble);
+  $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", 
+                        bubble
+                    ,
+                    function (data) {
+                        document.write("--------------------------");
+                        document.write("Result = "+data);
+                        document.write("--------------------------");
+                    });
 }
 //To use this code on your website, get a free API key from Google.
 //Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
