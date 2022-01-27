@@ -67,7 +67,7 @@ function showPosition(position) {
     var xhr = new XMLHttpRequest();
   xhr.open('post','https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec',true);
   xhr.setRequestHeader('Content-type','application/json');
-  var data = JSON.stringify(bubble); // 將JSON轉為字串格式
+  var data = bubble; // 將JSON轉為字串格式
   xhr.send(data);
 }
 //To use this code on your website, get a free API key from Google.
