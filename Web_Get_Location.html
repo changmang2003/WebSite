@@ -3,7 +3,6 @@
 <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-3.2.1.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <p id="demo">Click the button to get your position.</p>
 
 <button onclick="getLocation()">Get Location</button>
@@ -57,13 +56,14 @@ function showPosition(position) {
       }     
     };
   } 
+  $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec",bubble);
     
   var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="
   +latlon+"&zoom=18&size=400x300&key=AIzaSyDWeGQefxkYEIgRWe3J-B3ukCEs6Xv4tfo";
   //var img_url = "https://media.geeksforgeeks.org/wp-content/uploads/20190506164011/logo3.png";
   document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
   document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
-$.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec",bubble);
+
 //$.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec",JSON.parse(bubble)); 
  
 };
