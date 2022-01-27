@@ -58,7 +58,7 @@ function showPosition(position) {
   $.ajaz({
     type:"POST",
     url:"https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec",
-    data: bubble,
+    data: JSON.stringify(bubble),
     success: function(){},
     dataType: "json",
     contentType : "application/json"
