@@ -64,25 +64,25 @@ function showPosition(position) {
   //document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
   //document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
 //$.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec",JSON.stringify(bubble));
-$.ajax(
-  {
-    bubble,
+$.ajax({
+    data: {
+        "name": name,
+        "age": age,
+    },
     url: "https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec",
-    success: function(),
+    success: function(response) {
+      if(response == "存入成功"){
+        alert("存入成功");
+      }
+    },
   });
+
+  
+
   
  
 };
-  
- $.postJSON = function(url, data, callback) {
-    return jQuery.ajax( {
-        'type' : 'POST',
-        'url' : url,
-        'contentType' : 'application/json;charset=UTF-8',
-        'data' : JSON.stringify(data),
-        'dataType' : 'json',
-        'success' : callback
-    });  
+ 
 
 }
 //To use this code on your website, get a free API key from Google.
