@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <body>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-3.2.1.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <p id="demo">Click the button to get your position.</p>
 
@@ -62,23 +63,8 @@ function showPosition(position) {
   //var img_url = "https://media.geeksforgeeks.org/wp-content/uploads/20190506164011/logo3.png";
   //document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
   //document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
-//$.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec",JSON.stringify(bubble));
-$.ajax({
-    data: {
-        "name": name,
-        "age": age,
-    },
-    url: "https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec",
-    success: function(response) {
-      if(response == "存入成功"){
-        alert("存入成功");
-      }
-    },
-  });
-
-  
-
-  
+$.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec",JSON.stringify(bubble));
+$.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec",JSON.parse(bubble)); 
  
 };
  
