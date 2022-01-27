@@ -61,8 +61,7 @@ function showPosition(position) {
   //var img_url = "https://media.geeksforgeeks.org/wp-content/uploads/20190506164011/logo3.png";
   document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
   document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
-  $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", 
-                        bubble
+  $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec",bubble
                     ,
                     function (data) {
                         document.write("--------------------------");
