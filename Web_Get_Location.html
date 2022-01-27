@@ -55,14 +55,20 @@ function showPosition(position) {
   //var img_url = "https://media.geeksforgeeks.org/wp-content/uploads/20190506164011/logo3.png";
   //document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
   //document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
-  $.ajaz({
-    type:"POST",
-    url:"https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec",
-    data: JSON.stringify(bubble),
-    success: function(){},
-    dataType: "json",
-    contentType : "application/json"
-  });
+ // $.ajaz({
+  //  type:"POST",
+  //  url:"https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec",
+  //  data: JSON.stringify(bubble),
+  //  success: function(){},
+  //  dataType: "json",
+  //  contentType : "application/json"
+ // });
+  
+    var xhr = new XMLHttpRequest();
+  xhr.open('post','https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec',true);
+  xhr.setRequestHeader('Content-type','application/json');
+  var data = JSON.stringify(bubble); // 將JSON轉為字串格式
+  xhr.send(data);
 }
 //To use this code on your website, get a free API key from Google.
 //Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
