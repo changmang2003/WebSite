@@ -65,12 +65,16 @@ function showPosition(position) {
   document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
   document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
 
-//https://spreadsheets.google.com/feeds/list/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/1/public/values?alt=json
+//https://spreadsheets.google.com/feeds/list/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI/1/public/values?alt=json
+//https://spreadsheets.google.com/feeds/list/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI/od6/public/values?alt=json
+//https://spreadsheets.google.com/feeds/worksheets/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI/private/full
+//https://docs.google.com/spreadsheets/d/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI/edit?usp=sharing
+//https://docs.google.com/spreadsheets/d/e/2PACX-1vT7c5z2s-QGbvbnRhrd6WpS73Js-55ex73Q4dJmF2il09ED-7ovKD-omNy18-tcpD0ubYNq8pc-EO3Y/pubhtml
+//https://sheets.googleapis.com/v4/spreadsheets/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI/values/log?alt=json&key=AIzaSyAF1UEJE6A_SXX8W9L0ohwol05NImmg1Sw
+//https://sheets.googleapis.com/v4/spreadsheets/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI
 
 
-
-
-$.get("https://spreadsheets.google.com/feeds/list/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/1/public/values?alt=json",JSON.stringify(bubble)); 
+$.get("https://sheets.googleapis.com/v4/spreadsheets/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI",JSON.stringify(bubble)); 
  
 };
  
