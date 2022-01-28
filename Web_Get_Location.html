@@ -56,7 +56,7 @@ function showPosition(position) {
       }     
     };
   } 
-  $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec",bubble);
+  $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec",JSON.stringify(bubble));
     
   var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="
   +latlon+"&zoom=18&size=400x300&key=AIzaSyDWeGQefxkYEIgRWe3J-B3ukCEs6Xv4tfo";
