@@ -52,14 +52,14 @@
   var parameter = {};
   sendBtn.on('click', function() {
     parameter = {
-      url: sheetsUrl.val(),
-      name: sheetName.val(),
+      url: "https://docs.google.com/spreadsheets/d/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI/edit#gid=0",
+      name: "Location",
       data: data.toString(),
       row: data.length,
       column: data[0].length,
-      insertType: type.val()
+      insertType: "bottom"
     };
-    $.get(appUrl.val(), parameter);
+    $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
   });
   </script>
 
