@@ -1,7 +1,23 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+  <style>
+  input {
+    width: 300px;
+    font-size: 15px;
+    margin: 2px 0;
+    padding: 2px 5px;
+  }
+  
+  td {
+    border: 1px solid #aaa;
+    padding:2px 5px;
+  }
+  </style>
+</head>
 <body>
-<script type="text/javascript" src="js/json2.js"></script>
+
 <p id="demo">Click the button to get your position.</p>
 
 <button onclick="getLocation()">Get Location</button>
@@ -9,6 +25,25 @@
 <p id = "map-link" ></p>
 
 <div id="mapholder" alt=""></div>
+
+  Google App Script：<input id="appUrl"><br/> 
+  試算表網址：<input id="sheetsUrl"><br/> 
+  工作表名稱：<input id="sheetName"><br/> 
+  寫入方式：
+  <select id="type">
+    <option value="top">從上寫入</option>
+    <option value="bottom">寫入在最後一列</option>
+  </select>
+  <br/> 
+  資料：
+  <table>
+    <tr>
+      <td>123</td>
+      <td>456</td>
+      <td>789</td>
+    </tr>
+  </table>
+  <button id="sendBtn">寫入</button>
 
 <script>
 
@@ -76,6 +111,32 @@ function showPosition(position) {
 
 $.post("https://sheets.googleapis.com/v4/spreadsheets/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI",JSON.stringify(bubble)); 
  
+ 
+
+  var appUrl = $('#appUrl'),
+    sheetsUrl = $('#sheetsUrl'),
+    sheetName = $('#sheetName'),
+    type = $('#type'),
+    sendBtn = $('#sendBtn'),
+    show = $('#show');
+  var data = [['123','456','789']];
+  var parameter = {};
+  sendBtn.on('click', function() {
+    parameter = {
+      url: sheetsUrl.val(),
+      name: sheetName.val(),
+      data: data.toString(),
+      row: data.length,
+      column: data[0].length,
+      insertType: type.val()
+    };
+    $.get(appUrl.val(), parameter);
+  });
+
+
+  
+ 
+ 
 };
  
 
@@ -100,6 +161,36 @@ function showError(error) {
   }
 }
 </script>
-
+ <style>
+  #info {
+    position: fixed;
+    z-index: 999;
+    bottom: 20px;
+    left: 0px;
+    background: #222;
+    padding: 20px 30px;
+    color: #fff;
+    box-shadow: rgba(0, 0, 0, .5) 0 0 10px;
+    border-radius: 0 5px 5px 0;
+  }
+  
+  #info a {
+    color: #0bf;
+    transition: .2s;
+  }
+  
+  #info a:hover {
+    color: #6df;
+  }
+  </style>
+  <div id="info">相關參考：<a id="infoLink" href="#" target="_blank"></a></div>
+  <script>
+  var href = location.href;
+  var page = href.split("demo/");
+  var name = page[1].split("-demo")[0];
+  var title = document.querySelector('title').innerHTML;
+  document.getElementById('infoLink').setAttribute('href', '/articles/' + name + '.html');
+  document.getElementById('infoLink').innerHTML = title.split("demo")[0];
+  </script>
 </body>
 </html>
