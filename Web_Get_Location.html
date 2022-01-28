@@ -39,37 +39,7 @@
   var data = bubble;
   var parameter = {};
   
-  if (url.searchParams.get("punch")=="work"){
-    bubble = 
-    [        
-      "events":{
-        "type":"message",        
-        "message": [
-        {
-          "type":"work",
-          "latitude": position.coords.latitude,
-          "longitude": position.coords.longitude,
-          "timestamp": position.timestamp
-        }]
-      }    
-    ];
-  } else {
-     bubble = 
-    [            
-      "events":{
-        "type":"message",        
-        "message": [
-        {
-          "type":"outwork",
-          "latitude": position.coords.latitude,
-          "longitude": position.coords.longitude,
-          "timestamp": position.timestamp
-        }]
-      }     
-    ];
-  }   
-    
-
+ 
   sendBtn.on('click', function() {
     parameter = {
       url: "https://docs.google.com/spreadsheets/d/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI/edit#gid=0",
@@ -81,6 +51,7 @@
     };
     $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
   });
+  
   function getLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition, showError);
@@ -88,10 +59,11 @@
       x.innerHTML = "Geolocation is not supported by this browser.";
     }
   }
+  
   function showPosition(position) {
       var latlon = position.coords.latitude + "," + position.coords.longitude;
     const date = new Date(position.timestamp );
-    var bubble;  
+ 
     if (url.searchParams.get("punch")=="work"){
       bubble = 
       [        
@@ -123,6 +95,7 @@
     }
       document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
   }
+  
   function showError(error) {
     switch(error.code) {
       case error.PERMISSION_DENIED:
@@ -139,6 +112,7 @@
         break;
     }
   }
+  
   </script>
 
   
