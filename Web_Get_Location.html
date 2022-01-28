@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/json2.js"></script>
 <p id="demo">Click the button to get your position.</p>
 
 <button onclick="getLocation()">Get Location</button>
@@ -31,32 +30,34 @@ function showPosition(position) {
   var bubble  
   if (url.searchParams.get("punch")=="work"){
     bubble = 
-    {        
+    [        
       "events":{
         "type":"message",        
-        "message": {
+        "message": [
+        {
           "type":"work",
           "latitude": position.coords.latitude,
           "longitude": position.coords.longitude,
           "timestamp": position.timestamp
-        }
+        }]
       }    
-    };
+    ];
   } else {
      bubble = 
-    {            
+    [            
       "events":{
         "type":"message",        
-        "message": {
+        "message": [
+        {
           "type":"outwork",
           "latitude": position.coords.latitude,
           "longitude": position.coords.longitude,
           "timestamp": position.timestamp
-        }
+        }]
       }     
-    };
+    ];
   } 
-  $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec",JSON.stringify(bubble));
+
     
   var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="
   +latlon+"&zoom=18&size=400x300&key=AIzaSyDWeGQefxkYEIgRWe3J-B3ukCEs6Xv4tfo";
@@ -64,7 +65,12 @@ function showPosition(position) {
   document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
   document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
 
-//$.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec",JSON.parse(bubble)); 
+//https://spreadsheets.google.com/feeds/list/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/1/public/values?alt=json
+
+
+
+
+$.get("https://spreadsheets.google.com/feeds/list/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/1/public/values?alt=json",JSON.stringify(bubble)); 
  
 };
  
