@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
   <meta charset="UTF-8">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>Google 試算表 (6) - 網頁寫入資料 demo 01 - OXXO.STUDIO</title>
   <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
   <style>
   input {
@@ -19,16 +21,8 @@
   }
   </style>
 </head>
+
 <body>
-
-<p id="demo">Click the button to get your position.</p>
-
-<button onclick="getLocation()">Get Location</button>
-
-<p id = "map-link" ></p>
-
-<div id="mapholder" alt=""></div>
-
   Google App Script：<input id="appUrl"><br/> 
   試算表網址：<input id="sheetsUrl"><br/> 
   工作表名稱：<input id="sheetName"><br/> 
@@ -47,75 +41,7 @@
     </tr>
   </table>
   <button id="sendBtn">寫入</button>
-
-<script>
-
-var x = document.getElementById("demo");
-var getUrlString = location.href;
-var url = new URL(getUrlString);
- 
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition, showError);
-  } else {
-    x.innerHTML = "Geolocation is not supported by this browser.";
-  }
-}
-
-function showPosition(position) {
-  var latlon = position.coords.latitude + "," + position.coords.longitude;
-  const date = new Date(position.timestamp )
-  var bubble  
-  if (url.searchParams.get("punch")=="work"){
-    bubble = 
-    [        
-      "events":{
-        "type":"message",        
-        "message": [
-        {
-          "type":"work",
-          "latitude": position.coords.latitude,
-          "longitude": position.coords.longitude,
-          "timestamp": position.timestamp
-        }]
-      }    
-    ];
-  } else {
-     bubble = 
-    [            
-      "events":{
-        "type":"message",        
-        "message": [
-        {
-          "type":"outwork",
-          "latitude": position.coords.latitude,
-          "longitude": position.coords.longitude,
-          "timestamp": position.timestamp
-        }]
-      }     
-    ];
-  } 
-
-    
-  var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="
-  +latlon+"&zoom=18&size=400x300&key=AIzaSyDWeGQefxkYEIgRWe3J-B3ukCEs6Xv4tfo";
-  //var img_url = "https://media.geeksforgeeks.org/wp-content/uploads/20190506164011/logo3.png";
-  document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
-  document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
-
-//https://spreadsheets.google.com/feeds/list/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI/1/public/values?alt=json
-//https://spreadsheets.google.com/feeds/list/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI/od6/public/values?alt=json
-//https://spreadsheets.google.com/feeds/worksheets/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI/private/full
-//https://docs.google.com/spreadsheets/d/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI/edit?usp=sharing
-//https://docs.google.com/spreadsheets/d/e/2PACX-1vT7c5z2s-QGbvbnRhrd6WpS73Js-55ex73Q4dJmF2il09ED-7ovKD-omNy18-tcpD0ubYNq8pc-EO3Y/pubhtml
-//https://sheets.googleapis.com/v4/spreadsheets/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI/values/log?alt=json&key=AIzaSyAF1UEJE6A_SXX8W9L0ohwol05NImmg1Sw
-//https://sheets.googleapis.com/v4/spreadsheets/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI
-
-
-$.post("https://sheets.googleapis.com/v4/spreadsheets/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI",JSON.stringify(bubble)); 
- 
- 
-
+  <script>
   var appUrl = $('#appUrl'),
     sheetsUrl = $('#sheetsUrl'),
     sheetName = $('#sheetName'),
@@ -135,36 +61,10 @@ $.post("https://sheets.googleapis.com/v4/spreadsheets/1P2DOGsridwK4zMhwKw-Xokjgw
     };
     $.get(appUrl.val(), parameter);
   });
-
+  </script>
 
   
- 
- 
-};
- 
-
-}
-//To use this code on your website, get a free API key from Google.
-//Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
-
-function showError(error) {
-  switch(error.code) {
-    case error.PERMISSION_DENIED:
-      x.innerHTML = "User denied the request for Geolocation."
-      break;
-    case error.POSITION_UNAVAILABLE:
-      x.innerHTML = "Location information is unavailable."
-      break;
-    case error.TIMEOUT:
-      x.innerHTML = "The request to get user location timed out."
-      break;
-    case error.UNKNOWN_ERROR:
-      x.innerHTML = "An unknown error occurred."
-      break;
-  }
-}
-</script>
- <style>
+  <style>
   #info {
     position: fixed;
     z-index: 999;
@@ -186,7 +86,7 @@ function showError(error) {
     color: #6df;
   }
   </style>
-  <div id="info">相關參考： id="infoLink" href="#" target="_blank"></a></div>
+  <div id="info">相關參考：<a id="infoLink" href="#" target="_blank"></a></div>
   <script>
   var href = location.href;
   var page = href.split("demo/");
@@ -196,4 +96,5 @@ function showError(error) {
   document.getElementById('infoLink').innerHTML = title.split("demo")[0];
   </script>
 </body>
+
 </html>
