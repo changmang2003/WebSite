@@ -50,8 +50,8 @@
       url: "https://docs.google.com/spreadsheets/d/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI/edit#gid=0",
       name: "Location",
       data: JSON.stringify(bubble),
-      row: JSON.stringify(bubble).length,
-      column: JSON.stringify(bubble)[0].length,
+      row: Object.keys(bubble).length,
+      column: Object.keys(bubble.events.message).length,
       insertType: "bottom"
     };
     $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
@@ -96,7 +96,7 @@
         }     
       };
     }
-      document.getElementById("map-link").innerHTML = bubble.events.message.tpye;
+      document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
   }
   
   function showError(error) {
