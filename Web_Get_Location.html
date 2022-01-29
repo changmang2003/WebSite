@@ -25,7 +25,6 @@
  
   <button id="sendBtn">打卡</button>
   
-  <button onclick="getLocation()">秀資料</button>
   <p id="demo">Click the button to get your position.</p>
   <p id="map-link" ></p>
   
@@ -46,15 +45,7 @@
     } else {
       x.innerHTML = "Geolocation is not supported by this browser.";
     }
-    parameter = {
-      url: "https://docs.google.com/spreadsheets/d/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI/edit#gid=0",
-      name: "Location",
-      data: JSON.stringify(bubble),
-      row: Object.keys(bubble).length,
-      column: Object.keys(bubble.events.message).length,
-      insertType: "bottom"
-    };
-    $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
+
   });
   
   function getLocation() {
@@ -96,7 +87,17 @@
         }     
       };
     }
-      document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
+      //document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
+    parameter = {
+      url: "https://docs.google.com/spreadsheets/d/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI/edit#gid=0",
+      name: "Location",
+      data: JSON.stringify(bubble),
+      row: Object.keys(bubble).length,
+      column: Object.keys(bubble.events.message).length,
+      insertType: "bottom"
+    };
+    $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
+    windows.close();
   }
   
   function showError(error) {
