@@ -41,12 +41,17 @@
   
  
   sendBtn.on('click', function() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition, showError);
+    } else {
+      x.innerHTML = "Geolocation is not supported by this browser.";
+    }
     parameter = {
       url: "https://docs.google.com/spreadsheets/d/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI/edit#gid=0",
       name: "Location",
       data: JSON.stringify(bubble),
       row: JSON.stringify(bubble).length,
-      column: JSON.stringify(bubble)[0].length,
+      column: JSON.stringify(bubble)[1].length,
       insertType: "bottom"
     };
     $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
@@ -91,7 +96,7 @@
         }     
       };
     }
-      document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
+      document.getElementById("map-link").innerHTML = JSON.stringify(bubble)[1].length;
   }
   
   function showError(error) {
