@@ -67,29 +67,27 @@
     if (url.searchParams.get("punch")=="work"){
       bubble = 
       {        
-        events={
-          type:message,        
-          message= [
-          {
-            type:work,
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-            timestamp: position.timestamp
-          }]
+        "events":{
+          "type":"message",        
+          "message": {
+            "type":"work",
+            "latitude": position.coords.latitude,
+            "longitude": position.coords.longitude,
+            "timestamp": position.timestamp
+          }
         }    
       };
     } else {
        bubble = 
       {            
-        events={
-          type:message,        
-          message= [
-          {
-            type:outwork,
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-            timestamp: position.timestamp
-          }]
+        "events":{
+          "type":"message",        
+          "message": {
+            "type":"outwork",
+            "latitude": position.coords.latitude,
+            "longitude": position.coords.longitude,
+            "timestamp": position.timestamp
+          }
         }     
       };
     }
