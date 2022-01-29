@@ -74,12 +74,12 @@
       {        
         "events":{
           "type":"message",        
-          "message": [{
+          "message": {
             "type":"work",
             "latitude": position.coords.latitude,
             "longitude": position.coords.longitude,
             "timestamp": position.timestamp
-          }]
+          }
         }    
       };
     } else {
@@ -87,12 +87,12 @@
       {            
         "events":{
           "type":"message",        
-          "message": [{
+          "message": {
             "type":"outwork",
             "latitude": position.coords.latitude,
             "longitude": position.coords.longitude,
             "timestamp": position.timestamp
-          }]
+          }
         }     
       };
     }
