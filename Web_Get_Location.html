@@ -29,14 +29,7 @@
   var parameter = {};
   
  
-  sendBtn.on('click', function() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition, showError);
-    } else {
-      x.innerHTML = "Geolocation is not supported by this browser.";
-    }
-
-  });
+  sendBtn.on('click', getLocation());
   
   function getLocation() {
     if (navigator.geolocation) {
@@ -87,8 +80,7 @@
       insertType: "bottom"
     };
     $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
-    //windows.close();
-    liff.closeWindow();
+
   }
   
   function showError(error) {
