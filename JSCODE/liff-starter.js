@@ -19,6 +19,7 @@ function initializeApp(data) {
     document.getElementById('sendBtn').addEventListener('click', function () {
       
       document.getElementById("map-link").innerHTML = "you click me.";
+      
     });
 
     // closeWindow call
