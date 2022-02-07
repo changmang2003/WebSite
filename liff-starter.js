@@ -16,7 +16,7 @@ function initializeApp(data) {
     document.getElementById('openwindowbutton').addEventListener('click', function () {
       document.getElementById("map-link").innerHTML = "you click me.";
         liff.openWindow({
-            url: 'https://line.me'
+            url: 'https://line.me/1656820285-yQm6pRlW'
         });
     });
 
