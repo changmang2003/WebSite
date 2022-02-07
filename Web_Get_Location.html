@@ -84,7 +84,7 @@
         }     
       };
     }
-      //document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
+      
     parameter = {
       url: "https://docs.google.com/spreadsheets/d/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI/edit#gid=0",
       name: "Location",
@@ -94,8 +94,7 @@
       insertType: "bottom"
     };
     $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
-    //windows.close();
-    liff.closeWindow();
+    document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
   }
   
   function showError(error) {
