@@ -1,28 +1,80 @@
 <!DOCTYPE html>
-<html style="">
+<html lang="zh-TW">
+
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+
   <title>上/下班定位打卡</title>
+  <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
+  <script src="liff-starter.js"></script>
+  <style>
+  input {
+    width: 300px;
+    font-size: 15px;
+    margin: 2px 0;
+    padding: 2px 5px;
+  }
   
-  <link rel="stylesheet" href="LIFF%20Starter_files/style.css">
-
-
-
+  td {
+    border: 1px solid #aaa;
+    padding:2px 5px;
+  }
+    
+  html {
+    font-size: 11px;
+  }
+  
+  table {
+      width: 100%;
+      table-layout:fixed;
+      word-break: break-all;
+  }
+  
+  .div {
+      max-width: 100%;
+      text-align: center;
+  }
+  
+  #profilepicturediv {
+      text-align: center;
+  }
+  
+  img { 
+      max-width: 25%; 
+      height: auto; 
+  }
+  
+  #profileimagediv {
+      height: 100px;
+      width: 100px;
+  }
+  
+  #contextinfo {
+      display: none;
+  }
+  
+  #accesstokendata, #profileinfo {
+      display: none;
+  }
+  
+  .buttongroup {
+      text-align: center;
+  }
+  
+  button {
+      margin: 4px;
+  }
+  </style>
 </head>
 
-<body style="margin-bottom: 34px !important;">
-  <div class="buttongroup">
-    <div class="buttonrow">
-        <button id="sendBtn">打卡</button>
-        <button id="closewindowbutton">Close Window</button>
-    </div>
-    <div class="buttonrow">
-        <p id="demo">Click the button to get your position.</p>
-        <p id="map-link" ></p>
-    </div>    
-  </div> 
+<body>
+ 
   <button id="sendBtn">打卡</button>
+  <button id="closewindowbutton">Close Window</button>
+  <p id="demo">Click the button to get your position.</p>
+  <p id="map-link" ></p>
+  
   <script>
   var bubble = {}; 
   var x = document.getElementById("demo");
@@ -82,7 +134,7 @@
         }     
       };
     }
-      
+      //document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
     parameter = {
       url: "https://docs.google.com/spreadsheets/d/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI/edit#gid=0",
       name: "Location",
@@ -92,7 +144,8 @@
       insertType: "bottom"
     };
     $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
-    document.getElementById("map-link").innerHTML = "有執行";
+    //windows.close();
+    liff.closeWindow();
   }
   
   function showError(error) {
@@ -115,10 +168,37 @@
   </script>
 
   
-  <script src="test%20LIFF_files/jquery-1.9.1.js"></script>
-  <script src="LIFF%20Starter_files/sdk.js"></script>
-  <!-- script src="LIFF%20Starter_files/liff-starter.js"></script -->
-    
+  <style>
+  #info {
+    position: fixed;
+    z-index: 999;
+    bottom: 20px;
+    left: 0px;
+    background: #222;
+    padding: 20px 30px;
+    color: #fff;
+    box-shadow: rgba(0, 0, 0, .5) 0 0 10px;
+    border-radius: 0 5px 5px 0;
+  }
+  
+  #info a {
+    color: #0bf;
+    transition: .2s;
+  }
+  
+  #info a:hover {
+    color: #6df;
+  }
+  </style>
+  <div id="info">相關參考：<a id="infoLink" href="#" target="_blank"></a></div>
+  <script>
+  var href = location.href;
+  var page = href.split("demo/");
+  var name = page[1].split("-demo")[0];
+  var title = document.querySelector('title').innerHTML;
+  document.getElementById('infoLink').setAttribute('href', '/articles/' + name + '.html');
+  document.getElementById('infoLink').innerHTML = title.split("demo")[0];
+  </script>
 </body>
 
 </html>
