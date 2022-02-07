@@ -1,10 +1,5 @@
 window.onload = function (e) {
-  var bubble = {}; 
-  var x = document.getElementById("demo");
-  var getUrlString = location.href;
-  var url = new URL(getUrlString);
-  var data = bubble;
-  var parameter = {};
+
     liff.init(function (data) {
         initializeApp(data);
     });
@@ -92,6 +87,7 @@ function toggleElement(elementId) {
 }
 
 function getLocation() {
+  const x = document.getElementById("demo");
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition, showError);
   } else {
@@ -100,7 +96,12 @@ function getLocation() {
 }
 
 function showPosition(position) {
-    var latlon = position.coords.latitude + "," + position.coords.longitude;
+  const bubble = {};  
+  const getUrlString = location.href;
+  const url = new URL(getUrlString);
+  const data = bubble;
+  const parameter = {};
+  const latlon = position.coords.latitude + "," + position.coords.longitude;
   const date = new Date(position.timestamp );
 
   if (url.searchParams.get("punch")=="work"){
@@ -144,6 +145,7 @@ function showPosition(position) {
 }
   
 function showError(error) {
+  const x = document.getElementById("demo");
   switch(error.code) {
     case error.PERMISSION_DENIED:
       x.innerHTML = "User denied the request for Geolocation."
