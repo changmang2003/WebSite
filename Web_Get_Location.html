@@ -10,72 +10,20 @@
   <script src="test LIFF_files/jquery-1.9.1.js"></script>
   <script src="LIFF Starter_files/sdk.js"></script>
   <script src="LIFF Starter_files/liff-starter.js"></script>
-  <style>
-  input {
-    width: 300px;
-    font-size: 15px;
-    margin: 2px 0;
-    padding: 2px 5px;
-  }
-  
-  td {
-    border: 1px solid #aaa;
-    padding:2px 5px;
-  }
-    
-  html {
-    font-size: 11px;
-}
 
-table {
-    width: 100%;
-    table-layout:fixed;
-    word-break: break-all;
-}
-
-.div {
-    max-width: 100%;
-    text-align: center;
-}
-
-#profilepicturediv {
-    text-align: center;
-}
-
-img { 
-    max-width: 25%; 
-    height: auto; 
-}
-
-#profileimagediv {
-    height: 100px;
-    width: 100px;
-}
-
-#contextinfo {
-    display: none;
-}
-
-#accesstokendata, #profileinfo {
-    display: none;
-}
-
-.buttongroup {
-    text-align: center;
-}
-
-button {
-    margin: 4px;
-}
-  </style>
 </head>
 
-<body>
- 
-  <button id="sendBtn">打卡</button>
-  <button id="closewindowbutton">Close Window</button>
-  <p id="demo">Click the button to get your position.</p>
-  <p id="map-link" ></p>
+<body style="margin-bottom: 34px !important;">
+  <div class="buttongroup">
+    <div class="buttonrow">
+        <button id="sendBtn">打卡</button>
+        <button id="closewindowbutton">Close Window</button>
+    </div>
+    <div class="buttonrow">
+        <p id="demo">Click the button to get your position.</p>
+        <p id="map-link" ></p>
+    </div>    
+  </div> 
   
   <script>
   var bubble = {}; 
