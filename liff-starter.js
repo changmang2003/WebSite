@@ -14,6 +14,7 @@ function initializeApp(data) {
 
     // openWindow call
     document.getElementById('openwindowbutton').addEventListener('click', function () {
+      document.getElementById("map-link").innerHTML = "you click me.";
         liff.openWindow({
             url: 'https://line.me'
         });
