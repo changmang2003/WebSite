@@ -5,6 +5,13 @@ window.onload = function (e) {
 };
 
 function initializeApp(data) {
+  var bubble = {}; 
+  var x = document.getElementById("demo");
+  var getUrlString = location.href;
+  var url = new URL(getUrlString);
+  var data = bubble;
+  var parameter = {};
+  
     document.getElementById('languagefield').textContent = data.language;
     document.getElementById('viewtypefield').textContent = data.context.viewType;
     document.getElementById('useridfield').textContent = data.context.userId;
@@ -13,9 +20,7 @@ function initializeApp(data) {
     document.getElementById('groupidfield').textContent = data.context.groupId;
 
     // openWindow call
-    document.getElementById('openwindowbutton').addEventListener('click', function () {
-        document.getElementById("map-link").innerHTML = "js有執行;
-    });
+    document.getElementById('sendBtn').addEventListener('click', function () {getLocation()});
 
     // closeWindow call
     document.getElementById('closewindowbutton').addEventListener('click', function () {
@@ -83,4 +88,73 @@ function toggleElement(elementId) {
     } else {
         elem.style.display = "block";
     }
+}
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else {
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+    var latlon = position.coords.latitude + "," + position.coords.longitude;
+  const date = new Date(position.timestamp );
+
+  if (url.searchParams.get("punch")=="work"){
+    bubble = 
+    {        
+      "events":{
+        "type":"message",        
+        "message": {
+          "type":"work",
+          "latitude": position.coords.latitude,
+          "longitude": position.coords.longitude,
+          "timestamp": position.timestamp
+        }
+      }    
+    };
+  } else {
+     bubble = 
+    {            
+      "events":{
+        "type":"message",        
+        "message": {
+          "type":"outwork",
+          "latitude": position.coords.latitude,
+          "longitude": position.coords.longitude,
+          "timestamp": position.timestamp
+        }
+      }     
+    };
+  }
+    //document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
+  parameter = {
+    url: "https://docs.google.com/spreadsheets/d/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI/edit#gid=0",
+    name: "Location",
+    data: JSON.stringify(bubble),
+    row: Object.keys(bubble).length,
+    column: Object.keys(bubble.events.message).length,
+    insertType: "bottom"
+  };
+  $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
+
+}
+  
+function showError(error) {
+  switch(error.code) {
+    case error.PERMISSION_DENIED:
+      x.innerHTML = "User denied the request for Geolocation."
+      break;
+    case error.POSITION_UNAVAILABLE:
+      x.innerHTML = "Location information is unavailable."
+      break;
+    case error.TIMEOUT:
+      x.innerHTML = "The request to get user location timed out."
+      break;
+    case error.UNKNOWN_ERROR:
+      x.innerHTML = "An unknown error occurred."
+      break;
+  }
 }
