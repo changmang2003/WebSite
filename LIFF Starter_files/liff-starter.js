@@ -14,9 +14,7 @@ function initializeApp(data) {
 
     // openWindow call
     document.getElementById('openwindowbutton').addEventListener('click', function () {
-        liff.openWindow({
-            url: 'https://line.me'
-        });
+        document.getElementById("map-link").innerHTML = "js有執行;
     });
 
     // closeWindow call
