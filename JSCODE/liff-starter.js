@@ -1,16 +1,17 @@
 window.onload = function (e) {
-    liff.init(function (data) {
-        initializeApp(data);
-    });
-};
-
-function initializeApp(data) {
   var bubble = {}; 
   var x = document.getElementById("demo");
   var getUrlString = location.href;
   var url = new URL(getUrlString);
   var data = bubble;
   var parameter = {};
+    liff.init(function (data) {
+        initializeApp(data);
+    });
+};
+
+function initializeApp(data) {
+
   
     document.getElementById('languagefield').textContent = data.language;
     document.getElementById('viewtypefield').textContent = data.context.viewType;
