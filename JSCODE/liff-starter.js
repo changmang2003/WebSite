@@ -16,7 +16,10 @@ function initializeApp(data) {
     document.getElementById('groupidfield').textContent = data.context.groupId;
 
     // openWindow call
-    document.getElementById('sendBtn').addEventListener('click', getLocation );
+    document.getElementById('sendBtn').addEventListener('click', function () {
+      
+      document.getElementById("map-link").innerHTML = "you click me.";
+    });
 
     // closeWindow call
     document.getElementById('closewindowbutton').addEventListener('click', function () {
