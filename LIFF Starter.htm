@@ -1,0 +1,136 @@
+<html style=""><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIFF Starter</title>
+    <link rel="stylesheet" href="LIFF%20Starter_files/style.css">
+</head>
+
+<body style="margin-bottom: 34px !important;">
+    <div class="buttongroup">
+        <div class="buttonrow">
+            <button id="openwindowbutton">Open Window</button>
+            <button id="closewindowbutton">Close Window</button>
+        </div>
+        <div class="buttonrow">
+            <button id="getaccesstoken">Get Access Token</button>
+            <button id="getprofilebutton">Get Profile</button>
+            <button id="sendmessagebutton">Send Message</button>
+        </div>
+    </div>
+
+    <div id="accesstokendata">
+        <h2>Access Token</h2>
+        <a href="#" onclick="toggleAccessToken()">Close Access Token</a>
+        <table border="1">
+            <tbody><tr>
+                <th>accessToken</th>
+                <td id="accesstokenfield"></td>
+            </tr>
+        </tbody></table>
+    </div>
+
+    <div id="profileinfo">
+        <h2>Profile</h2>
+        <a href="#" onclick="toggleProfileData()">Close Profile</a>
+        <div id="profilepicturediv">
+        </div>
+        <table border="1">
+            <tbody><tr>
+                <th>userId</th>
+                <td id="useridprofilefield"></td>
+            </tr>
+            <tr>
+                <th>displayName</th>
+                <td id="displaynamefield"></td>
+            </tr>
+            <tr>
+                <th>statusMessage</th>
+                <td id="statusmessagefield"></td>
+            </tr>
+        </tbody></table>
+    </div>
+
+    <div id="liffdata">
+        <h2>LIFF Data</h2>
+        <table border="1">
+            <tbody><tr>
+                <th>language</th>
+                <td id="languagefield"></td>
+            </tr>
+            <tr>
+                <th>context.viewType</th>
+                <td id="viewtypefield"></td>
+            </tr>
+            <tr>
+                <th>context.userId</th>
+                <td id="useridfield"></td>
+            </tr>
+            <tr>
+                <th>context.utouId</th>
+                <td id="utouidfield"></td>
+            </tr>
+            <tr>
+                <th>context.roomId</th>
+                <td id="roomidfield"></td>
+            </tr>
+            <tr>
+                <th>context.groupId</th>
+                <td id="groupidfield"></td>
+            </tr>
+        </tbody></table>
+    </div>
+    
+    <script src="LIFF%20Starter_files/sdk.js"></script><link rel="stylesheet" type="text/css" href="LIFF%20Starter_files/s3downbar.css"><link rel="stylesheet" type="text/css" href="LIFF%20Starter_files/contextmenu.css"><link rel="stylesheet" type="text/css" href="LIFF%20Starter_files/tooltip.css"><div id="s3downbar-ibmbeeacmbeeaebmfjpmnlgkhoejinha" style="box-sizing: initial !important; position: fixed; white-space: nowrap; width: 100% !important; left: 0px; bottom: 0px; border-top: 1px solid rgb(153, 153, 153); transform-origin: left bottom 0px; z-index: 2147483647; margin: 0px; padding: 2px 0px; background-color: rgb(238, 238, 238); color: rgb(34, 34, 34); display: flex !important; transform: scale(1) !important;"><style type="text/css" media="print">#s3downbar-ibmbeeacmbeeaebmfjpmnlgkhoejinha { display: none !important; }</style><div style="box-sizing: initial !important; position: absolute !important;" id="s3downbar_resize_pane" is_top="false"><div style="box-sizing: initial !important;" class="tooltip_box" is_top="false"></div><div style="box-sizing: initial !important;" class="tooltip_arrow" is_top="false"></div></div><div style="box-sizing: initial !important; color: rgb(34, 34, 34) !important; position: relative !important; order: 4 !important;" class="s3dmBox" id="s3downbar_hide_button" is_hidden="false"><div id="s3downbar_hide_button_img" style="box-sizing: initial !important; background-image: url(&quot;moz-extension://38dfc377-b3e7-4f30-9ee0-ca6aa2a3f290/skin/s3dm_icons.png&quot;) !important; display: inline-block !important;"></div><div style="box-sizing: initial !important;" class="tooltip_box" is_top="false"><div style="box-sizing: initial !important;" class="tooltipText">Hide Download Bar</div><div style="box-sizing: initial !important;" class="tooltipText">Ctrl + Shift + Z = Show/Hide Download Bar</div></div><div style="box-sizing: initial !important;" class="tooltip_arrow" is_top="false"></div></div><div style="box-sizing: initial !important; color: rgb(34, 34, 34) !important; position: relative !important;" class="s3dmBox" id="s3downbar_main_menu_button" is_hidden="false"><img style="box-sizing: initial !important;" src="LIFF%20Starter_files/logo16.png"><span style="box-sizing: initial !important;">下載</span><div style="box-sizing: initial !important;" class="tooltip_box" is_top="false"><div style="box-sizing: initial !important;" class="tooltipText">Download Manager (S3)</div></div><div style="box-sizing: initial !important;" class="tooltip_arrow" is_top="false"></div></div><div style="box-sizing: initial !important; color: rgb(34, 34, 34) !important; position: relative !important; order: 2 !important;" class="s3dmBox" id="s3downbar_clear_button" is_hidden="false">清除<div style="box-sizing: initial !important;" class="tooltip_box" is_top="false"><div style="box-sizing: initial !important;" class="tooltipText">按左鍵: 移除全部已完成檔案</div><div style="box-sizing: initial !important;" class="tooltipText">按右鍵: 復原上次清除項目</div></div><div style="box-sizing: initial !important;" class="tooltip_arrow" is_top="false"></div></div><div style="box-sizing: initial !important; color: rgb(34, 34, 34) !important; position: relative !important; order: 1 !important;" class="s3dmBox" id="s3downbar_holder_summary_progress" is_hidden="false"><div style="box-sizing: initial !important;">0%</div><div style="box-sizing: initial !important;" class="tooltip_box" is_top="false"><div style="box-sizing: initial !important;" class="tooltipText">下載歷史記錄</div></div><div style="box-sizing: initial !important;" class="tooltip_arrow" is_top="false"></div></div><div style="box-sizing: initial !important;" id="s3downbar_download_data_listbox"><div style="box-sizing: initial !important; max-height: 26px !important;" id="s3downbar_download_data_listbox_scroll" list_count="1"><div style="box-sizing: initial !important;" id="s3downbar_download_data_list_empty">Download list is empty</div><div id="s3db_C4CA4238A0B923820DCC509A6F75849B" class="download_data_box db_progressStack" style="background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)) !important;" click_handle="progress_click_handle">
+		<div class="download_data_box_iframe_box"><div id="s3downbar_download_box_iframe" is_hidden="true" class="download_data_box_iframe"></div></div>
+		<div id="s3downbar_download_box_progressremainder" class="download_data_box_progressremainder" is_hidden="false"></div>
+		<div id="s3downbar_download_box_progress" class="download_data_box_progress" style="background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)) !important;" is_hidden="false"></div>
+		<div id="s3downbar_download_box_data" class="download_data_box_data">
+			<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" id="s3downbar_download_box_img" class="download_data_box_img" style="background: rgba(0, 0, 0, 0) url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAC60lEQVQ4T12Tz0tUURTHv+e++3466pT9JIpoXUgUWGAuW7VrUa2CjIoWtTCyiHatIv+CphbRRsSitBaSKP2AEFokTVExmDqajTrP+fnm13u3894oiBcOvAv3fM73e855hC3n+EQ+Aa16VqEWVzIPQQF0vQpDL3q6LE4Ztnfx7aGzsxtptPFxbMLrJgRjoLrtUwkQVfhUgRANfuLDMYsM8RCzM6rFzD8dPHD9cpgbAcJkpRrvQQ1SVEUQRQ0k6lBoQBM+DOkhHluApgXY0ToDU2afJHY9vBwBjo6Xy0S+HSayggjgw4PibzDC1GscBbRYK6xkDdta0gxw4cjSKep85yWIGr3ZmTRKy3koYXJF4kpl2HsN2Ptk5NLS1+AYDDEXYZt57I6nYGi5FB1+mfHT334LX4tDGAaEJjgYIClqoBasoP2IBUNkOXkZ7U46Ajj6UgSl/YkZtTLP3bYsblgzOYpyDq2O/qxiOQdjO5d7OvalYEu2YJWh0xLaYgW+Z0Dtj36rSrEOIQU3bT15ZRHBj6nPxdHbJ0P5Xa8+pahj+pCpl3kSFbaSgSUWYZkeSN5PKgorC+5fWFkFoC/jfDduFV5cHWhO6XFCCq9X1+uIyV8wzQZDXEjKrpG4l1SCK0fVGSJW09DmfjJMfigMX+tZB/yVWN0jtQpMWkSbk+GxlpQuyheI7iZdEog3AQQ9/R0i+4/lkIJmXigOXRrsmnjQzeg+S8yf4GZabGXSloWBoeOTHwn9yQQDejk4hyBXZ6EvzfD42Yq0FFt6mhu+Em3d5rP9zMC57GjfYHOV7yR5kZQdqtBKLsw/X6MFYl+sivdABQ0KglkEfprXvRNBECMV1N03fU4T0J/sBqn3LIBCiDU3DVFYjVQIoYXdBQOaqpQPBije3B535BZb2DgRBGOhknAS5sIPhiyDfP6Z+BVriV5yZY/rnHZHbn6M7lu9hT2RIjjPBlqEX4VWdPnvzsOslWt+zn2ee32jd3POfzbVN45OOLOTAAAAAElFTkSuQmCC&quot;) no-repeat scroll 50% 50% / contain !important;" no_image="false" is_hidden="true">
+			<img src="" id="s3downbar_download_box_img_queue" class="download_data_box_img" is_hidden="true">
+			<img src="" id="s3downbar_download_box_picToShrink" pictoshrink="true" is_hidden="true" class="download_data_box_img">
+			<div id="s3downbar_download_box_filename" class="download_data_box_filename">LIFF Starter.htm</div>
+			<div id="s3downbar_download_box_progress_data" class="download_data_box_progress_data" is_hidden="false">
+				<div id="s3downbar_download_box_progress_percent" class="download_data_box_progress_percent" is_hidden="true">未知</div>
+				<div id="s3downbar_download_box_progress_remaintime" class="download_data_box_progress_remaintime" is_hidden="false">未知</div>
+				<div id="s3downbar_download_box_progress_bytesReceived" class="download_data_box_progress_bytesReceived" is_hidden="true">-.--</div>
+				<div id="s3downbar_download_box_progress_speed" class="download_data_box_progress_speed" is_hidden="false">-.--</div>
+			</div>
+		</div>
+	<div style="box-sizing: initial !important; position: fixed !important; z-index: 50 !important;"><div style="box-sizing: initial !important;" class="tooltip_box" is_top="false"><div id="download_data_tooltip" class="download_data_tooltip">
+		<div class="download_data_tooltip_head">
+			<img src="data:image/png;base64,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" id="s3downbar_download_tooltip_img" class="download_data_tooltip_img" no_image="false">
+			<div id="s3downbar_download_tooltip_filename" class="download_data_tooltip_filename">LIFF Starter.htm </div>
+		</div>
+		<div class="download_data_tooltip_data_box" id="s3downbar_download_tooltip_data_box" is_hidden_progress="false" is_hidden_finish="true">
+			<table class="download_data_tooltip_data">
+				<tbody><tr id="s3downbar_download_tooltip_source_box"><td><div>Source:</div></td><td><input type="text" id="s3downbar_download_tooltip_source" class="download_data_tooltip_url" readonly="true" title="https://liff.line.me/1656820285-1BNXDbvL" value="https://liff.line.me/1656820285-1BNXDbvL"></td></tr>
+				<tr><td><div>從:</div></td><td><input type="text" id="s3downbar_download_tooltip_from" class="download_data_tooltip_url" readonly="true" title="https://clarence.tw/line-liff-starter/" value="https://clarence.tw/line-liff-starter/"></td></tr>
+				<tr><td><div>儲存至:</div></td><td><div id="s3downbar_download_tooltip_to">C:\Users\Changmang.Yu\Documents\GitHub\changmang2003\LIFF Starter.htm</div></td></tr>
+				<tr class="download_progress"><td><div>狀態:</div></td><td><div id="s3downbar_download_tooltip_status">-.-- / 未知 ( -.-- )</div></td></tr>
+				<tr class="download_finish"><td><div>檔案大小:</div></td><td><div id="s3downbar_download_tooltip_size" filenotfound="true">找不到檔案</div></td></tr>
+				<tr class="download_finish" id="s3downbar_download_virus_scan_box" is_hidden="true"><td><div id="s3downbar_download_virus_scan_label">Virus scan:</div></td><td><a id="s3downbar_download_virus_scan" target="_blank"></a></td></tr>
+				<tr><td><div>開始時間:</div></td><td><div id="s3downbar_download_tooltip_timeStart">2022.02.07 - 11:13:53</div></td></tr>
+				<tr class="download_finish"><td><div>完成時間:</div></td><td><div id="s3downbar_download_tooltip_timeEnd">未知</div></td></tr>
+				<tr class="download_progress"><td><div>剩餘時間:</div></td><td><div id="s3downbar_download_tooltip_timeLeft">未知</div></td></tr>
+				<tr class="download_progress"><td><div>完成百分比:</div></td><td><div id="s3downbar_download_tooltip_percent">未知</div></td></tr>
+				<tr class="download_finish"><td><div>平均速度:</div></td><td><div id="s3downbar_download_tooltip_speed">未知</div></td></tr>
+			</tbody></table>
+			<div class="download_data_tooltip_img_preview_box download_finish"><div class="download_data_tooltip_img_box">
+				<img src="" id="s3downbar_download_tooltip_img_preview" is_hidden="true" class="download_data_tooltip_img_preview download_finish" width="120" height="120">
+				<div id="s3downbar_download_tooltip_img_size" class="download_data_tooltip_img_size"></div>
+			</div></div>
+		</div>
+		<div class="download_data_tooltip_hint" id="s3downbar_download_tooltip_hint_progress" is_hidden="false">
+			<div>mouse double click: download pause/resume</div>
+			<div>mouse middle click: download cancel</div>
+		</div>
+		<div class="download_data_tooltip_hint" id="s3downbar_download_tooltip_hint_finish" is_hidden="true">
+			<div>mouse double click: open file</div>
+			<div>mouse double click + Ctrl: open dir</div>
+			<div style="padding-top: 4px !important;">mouse middle click: delete from list</div>
+			<div>mouse middle click + Ctrl: delete from system</div>
+			<div style="padding-top: 4px !important;">press mouse button + Ctrl: drag &amp; drop</div>
+		</div>
+	</div></div><div style="box-sizing: initial !important;" class="tooltip_arrow" is_top="false"></div></div></div></div></div></div>
+    <script src="LIFF%20Starter_files/liff-starter.js"></script>
+</body></html>
