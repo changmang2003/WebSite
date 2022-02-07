@@ -3,22 +3,33 @@
 
 <head>
   <meta charset="UTF-8">
-
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.js"></script>
+  <script type="text/javascript" src="JSCODE/liff-starter.js"></script>
+  <link rel="stylesheet" href="CSS/style.css">
+  
   <title>上/下班定位打卡</title>
 
   
   <!--
   <script type="text/javascript" src="WebSite/JSCODE/sdk.js"></script>
-  <script type="text/javascript" src="WebSite/JSCODE/liff-starter.js"></script>
+  
   -->
 </head>
 
-<body>
+<body style="margin-bottom: 34px !important;">
+  <div class="buttongroup">
+    <div class="buttonrow">
+        <button id="sendBtn">打卡</button>
+        <button id="closewindowbutton">Close Window</button>
+    </div>
+    <div class="buttonrow">
+        <p id="demo">Click the button to get your position.</p>
+        <p id="map-link" ></p>
+    </div>    
+  </div> 
  
   <button id="sendBtn">打卡</button>
   <button id="closewindowbutton">Close Window</button>
-  <p id="demo">Click the button to get your position.</p>
-  <p id="map-link" ></p>
   
   <script>
   var bubble = {}; 
@@ -106,6 +117,6 @@
 
 </body>
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.js"></script>
+
 
 </html>
