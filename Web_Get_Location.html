@@ -29,7 +29,7 @@
   var parameter = {};
   
  
-  sendBtn.on('click', getLocation());
+  sendBtn.on('click', function(){getLocation});
   
   function getLocation() {
     if (navigator.geolocation) {
