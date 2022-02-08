@@ -12,13 +12,7 @@ function initializeApp(data) {
     document.getElementById('roomidfield').textContent = data.context.roomId;
     document.getElementById('groupidfield').textContent = data.context.groupId;
     
-    var bubble = {};  
-    var getUrlString = location.href;
-    var url = new URL(getUrlString);  
-    var parameter = {};
-    var latlon = position.coords.latitude + "," + position.coords.longitude;
-    var date = new Date(position.timestamp );
-    var x = document.getElementById("demo");
+
     // openWindow call
     document.getElementById('openwindowbutton').addEventListener('click', getLocation);
 
@@ -100,7 +94,13 @@ function getLocation() {
 }
 
 function showPosition(position) {
-
+    var bubble = {};  
+    var getUrlString = location.href;
+    var url = new URL(getUrlString);  
+    var parameter = {};
+    var latlon = position.coords.latitude + "," + position.coords.longitude;
+    var date = new Date(position.timestamp );
+    var x = document.getElementById("demo");
 
   if (url.searchParams.get("punch")=="work"){
     bubble = 
