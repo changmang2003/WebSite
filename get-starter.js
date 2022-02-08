@@ -1,13 +1,10 @@
 window.onload = function (e) {
-
     liff.init(function (data) {
         initializeApp(data);
     });
 };
 
-function initializeApp(data) {
-
-  
+function initializeApp(data) {  
     document.getElementById('languagefield').textContent = data.language;
     document.getElementById('viewtypefield').textContent = data.context.viewType;
     document.getElementById('useridfield').textContent = data.context.userId;
@@ -17,8 +14,9 @@ function initializeApp(data) {
 
     // openWindow call
     document.getElementById('openwindowbutton').addEventListener('click', function () {
-      
       document.getElementById("map-link").innerHTML = "you click me.";
+      
+      
       
     });
 
@@ -102,8 +100,7 @@ function getLocation() {
 function showPosition(position) {
   const bubble = {};  
   const getUrlString = location.href;
-  const url = new URL(getUrlString);
-  const data = bubble;
+  const url = new URL(getUrlString);  
   const parameter = {};
   const latlon = position.coords.latitude + "," + position.coords.longitude;
   const date = new Date(position.timestamp );
@@ -135,6 +132,7 @@ function showPosition(position) {
       }     
     };
   }
+  const data = bubble;
     //document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
   parameter = {
     url: "https://docs.google.com/spreadsheets/d/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI/edit#gid=0",
