@@ -4,7 +4,7 @@ window.onload = function (e) {
     });
 };
 
-function initializeApp(data) {  
+function initializeApp(data) {
     document.getElementById('languagefield').textContent = data.language;
     document.getElementById('viewtypefield').textContent = data.context.viewType;
     document.getElementById('useridfield').textContent = data.context.userId;
@@ -15,9 +15,9 @@ function initializeApp(data) {
     // openWindow call
     document.getElementById('openwindowbutton').addEventListener('click', function () {
       document.getElementById("map-link").innerHTML = "you click me.";
-      
-      
-      
+        liff.openWindow({
+            url: 'https://liff.line.me/1656820285-yQm6pRlW'
+        });
     });
 
     // closeWindow call
