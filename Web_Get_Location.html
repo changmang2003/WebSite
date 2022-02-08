@@ -1,114 +1,89 @@
 
+<!-- saved from url=(0038)https://clarence.tw/line-liff-starter/ -->
 <html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>上下班定位打卡</title>
-  <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
-  <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
-  <script src="get-starter.js"></script>
-  <link rel="stylesheet" href="style.css">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIFF Starter</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <div class="buttongroup">
-    <div class="buttonrow">
-        <button id="openwindowbutton">打卡</button>
-        <button id="closewindowbutton">Close Window</button>
+    <div class="buttongroup">
+        <div class="buttonrow">
+            <button id="openwindowbutton">Open Window</button>
+            <button id="closewindowbutton">Close Window</button>
+        </div>
+        <div class="buttonrow">
+            <p id="map-link" >回傳資料</p>
+            <button id="getaccesstoken">Get Access Token</button>
+            <button id="getprofilebutton">Get Profile</button>
+            <button id="sendmessagebutton">Send Message</button>
+        </div>
     </div>
-    <div class="buttonrow">
-        <p id="demo">Click the button to get your position.</p>
-        <p id="map-link" ></p>
-    </div>    
-  </div> 
 
-<!-- 
-  <script>
-  var bubble = {}; 
-  var x = document.getElementById("demo");
-  var getUrlString = location.href;
-  var url = new URL(getUrlString);
-  var sendBtn = $('#sendBtn'),
-      show = $('#show');
-  var data = bubble;
-  var parameter = {};
-  
- 
-  sendBtn.on('click', function(){getLocation()});
-  
-  function getLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition, showError);
-    } else {
-      x.innerHTML = "Geolocation is not supported by this browser.";
-    }
-  }
-  
-  function showPosition(position) {
-      var latlon = position.coords.latitude + "," + position.coords.longitude;
-    const date = new Date(position.timestamp );
- 
-    if (url.searchParams.get("punch")=="work"){
-      bubble = 
-      {        
-        "events":{
-          "type":"message",        
-          "message": {
-            "type":"work",
-            "latitude": position.coords.latitude,
-            "longitude": position.coords.longitude,
-            "timestamp": position.timestamp
-          }
-        }    
-      };
-    } else {
-       bubble = 
-      {            
-        "events":{
-          "type":"message",        
-          "message": {
-            "type":"outwork",
-            "latitude": position.coords.latitude,
-            "longitude": position.coords.longitude,
-            "timestamp": position.timestamp
-          }
-        }     
-      };
-    }
-      //document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
-    parameter = {
-      url: "https://docs.google.com/spreadsheets/d/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI/edit#gid=0",
-      name: "Location",
-      data: JSON.stringify(bubble),
-      row: Object.keys(bubble).length,
-      column: Object.keys(bubble.events.message).length,
-      insertType: "bottom"
-    };
-    $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
+    <div id="accesstokendata">
+        <h2>Access Token</h2>
+        <a href="#" onclick="toggleAccessToken()">Close Access Token</a>
+        <table border="1">
+            <tbody><tr>
+                <th>accessToken</th>
+                <td id="accesstokenfield"></td>
+            </tr>
+        </tbody></table>
+    </div>
 
-  }
-  
-  function showError(error) {
-    switch(error.code) {
-      case error.PERMISSION_DENIED:
-        x.innerHTML = "User denied the request for Geolocation."
-        break;
-      case error.POSITION_UNAVAILABLE:
-        x.innerHTML = "Location information is unavailable."
-        break;
-      case error.TIMEOUT:
-        x.innerHTML = "The request to get user location timed out."
-        break;
-      case error.UNKNOWN_ERROR:
-        x.innerHTML = "An unknown error occurred."
-        break;
-    }
-  }
-  
-  </script>
--->
-</body>
+    <div id="profileinfo">
+        <h2>Profile</h2>
+        <a href="#" onclick="toggleProfileData()">Close Profile</a>
+        <div id="profilepicturediv">
+        </div>
+        <table border="1">
+            <tbody><tr>
+                <th>userId</th>
+                <td id="useridprofilefield"></td>
+            </tr>
+            <tr>
+                <th>displayName</th>
+                <td id="displaynamefield"></td>
+            </tr>
+            <tr>
+                <th>statusMessage</th>
+                <td id="statusmessagefield"></td>
+            </tr>
+        </tbody></table>
+    </div>
 
-
-
-</html>
+    <div id="liffdata">
+        <h2>LIFF Data</h2>
+        <table border="1">
+            <tbody><tr>
+                <th>language</th>
+                <td id="languagefield"></td>
+            </tr>
+            <tr>
+                <th>context.viewType</th>
+                <td id="viewtypefield"></td>
+            </tr>
+            <tr>
+                <th>context.userId</th>
+                <td id="useridfield"></td>
+            </tr>
+            <tr>
+                <th>context.utouId</th>
+                <td id="utouidfield"></td>
+            </tr>
+            <tr>
+                <th>context.roomId</th>
+                <td id="roomidfield"></td>
+            </tr>
+            <tr>
+                <th>context.groupId</th>
+                <td id="groupidfield"></td>
+            </tr>
+        </tbody></table>
+    </div>
+    
+    <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
+    <script src="get-starter.js"></script>
+</body></html>
