@@ -101,6 +101,7 @@ function showPosition(position) {
     var latlon = position.coords.latitude + "," + position.coords.longitude;
     var date = new Date(position.timestamp );
     var x = document.getElementById("demo");
+    const data = {};
 
   if (url.searchParams.get("punch")=="work"){
     bubble = 
@@ -129,8 +130,8 @@ function showPosition(position) {
       }     
     };
   }
-  const data = bubble;
-    document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
+  
+    //document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
   parameter = {
     url: "https://docs.google.com/spreadsheets/d/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI/edit#gid=0",
     name: "Location",
@@ -140,7 +141,7 @@ function showPosition(position) {
     insertType: "bottom"
   };
   $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
-
+    document.getElementById("map-link").innerHTML = JSON.stringify(parameter.data);
 }
   
 function showError(error) {
