@@ -11,7 +11,14 @@ function initializeApp(data) {
     document.getElementById('utouidfield').textContent = data.context.utouId;
     document.getElementById('roomidfield').textContent = data.context.roomId;
     document.getElementById('groupidfield').textContent = data.context.groupId;
-
+    
+    var bubble = {};  
+    var getUrlString = location.href;
+    var url = new URL(getUrlString);  
+    var parameter = {};
+    var latlon = position.coords.latitude + "," + position.coords.longitude;
+    var date = new Date(position.timestamp );
+    var x = document.getElementById("demo");
     // openWindow call
     document.getElementById('openwindowbutton').addEventListener('click', function () {
       getLocation();
@@ -86,7 +93,7 @@ function toggleElement(elementId) {
 }
 
 function getLocation() {
-  const x = document.getElementById("demo");
+  
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition, showError);
   } else {
@@ -95,12 +102,7 @@ function getLocation() {
 }
 
 function showPosition(position) {
-  const bubble = {};  
-  const getUrlString = location.href;
-  const url = new URL(getUrlString);  
-  const parameter = {};
-  const latlon = position.coords.latitude + "," + position.coords.longitude;
-  const date = new Date(position.timestamp );
+
 
   if (url.searchParams.get("punch")=="work"){
     bubble = 
@@ -129,7 +131,7 @@ function showPosition(position) {
       }     
     };
   }
-  const data = bubble;
+  //const data = bubble;
     document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
   parameter = {
     url: "https://docs.google.com/spreadsheets/d/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI/edit#gid=0",
@@ -144,7 +146,7 @@ function showPosition(position) {
 }
   
 function showError(error) {
-  const x = document.getElementById("demo");
+  
   switch(error.code) {
     case error.PERMISSION_DENIED:
       x.innerHTML = "User denied the request for Geolocation."
