@@ -20,9 +20,7 @@ function initializeApp(data) {
     var date = new Date(position.timestamp );
     var x = document.getElementById("demo");
     // openWindow call
-    document.getElementById('openwindowbutton').addEventListener('click', function () {
-      getLocation();
-    });
+    document.getElementById('openwindowbutton').addEventListener('click', getLocation);
 
     // closeWindow call
     document.getElementById('closewindowbutton').addEventListener('click', function () {
