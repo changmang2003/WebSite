@@ -141,7 +141,7 @@ function showPosition(position) {
     insertType: "bottom"
   };
   $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
-    document.getElementById("map-link").innerHTML = "回傳："+ JSON.stringify(parameter);
+    document.getElementById("map-link").innerHTML = "回傳：";
 }
   
 function showError(error) {
