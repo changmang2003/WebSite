@@ -105,35 +105,32 @@ function getLocation() {
 function showPosition(position) {
 
     let bubble = {};  
-    let getUrlString = location.href;
+    //let getUrlString = location.href;
     //let url = new URL(getUrlString);  
     let parameter = {};
     let latlon = position.coords.latitude + "," + position.coords.longitude;
     //let date = new Date(position.timestamp );
 
-    liff.getProfile().then(profile => {
+    const profile = liff.getProfile();
       
       bubble = 
-    {        
-      events:{
-        type:"message",        
-        message: {
-          type: document.getElementById("demo").textContent,
-          userid: profile.userId,
-          username: profile.displayName,
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-          timestamp: position.timestamp
-        }
-      }    
-    }; 
-    })
-    .catch((err) => {
-      console.log('error', err);
-    });
+      {        
+        events:{
+          type:"message",        
+          message: {
+            type: document.getElementById("demo").textContent,
+            userid: "",
+            username: "",
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+            timestamp: position.timestamp
+          }
+        }    
+      }; 
+    
   
      
-    document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
+   //document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
   parameter = {
     url: "https://docs.google.com/spreadsheets/d/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI/edit#gid=0",
     name: "Location",
@@ -145,7 +142,7 @@ function showPosition(position) {
   
   $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
     document.getElementById("map-link").innerHTML = document.getElementById("demo").textContent+"完成："+ latlon ;    
-    //document.getElementById("demo").innerHTML = name;
+    document.getElementById("demo").innerHTML = JSON.stringify(profile);
 }
   
 function showError(error) {
