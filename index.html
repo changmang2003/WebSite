@@ -3,8 +3,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>test LIFF</title>
-    <script src="test%20LIFF_files/sdk.js"></script>
-    <script src="test%20LIFF_files/jquery-3.js"></script>
+    <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="test%20LIFF_files/bootstrap.js"></script>
     <link href="test%20LIFF_files/bootstrap.css" rel="stylesheet">
     <script>
@@ -33,7 +33,7 @@
                         //顯示在text box中
                         $('#UserInfo').val(profile.displayName);
                         //居然可以alert
-                        alert('done');
+                        alert(JSON.stringify(profile));
                     }
                 );
             });
