@@ -94,6 +94,10 @@ function getLocation() {
 }
 
 function showPosition(position) {
+    var script=document.createElement("script");
+    script.type="text/javascript";
+    script.src="jquery.js";
+    document.getElementsByTagName('head')[0].appendChild(script);
     var bubble = {};  
     var getUrlString = location.href;
     var url = new URL(getUrlString);  
@@ -140,9 +144,9 @@ function showPosition(position) {
     column: Object.keys(bubble.events.message).length,
     insertType: "bottom"
   };
-  document.getElementById("map-link").innerHTML = "回傳："+ JSON.stringify(parameter);
+  
   $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
-    
+    document.getElementById("map-link").innerHTML = "回傳："+ JSON.stringify(parameter);
 }
   
 function showError(error) {
