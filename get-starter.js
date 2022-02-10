@@ -5,23 +5,25 @@ window.onload = function (e) {
 };
 
 function initializeApp(data) {
+    var worktype,userid,username;
     document.getElementById('languagefield').textContent = data.language;
     document.getElementById('viewtypefield').textContent = data.context.viewType;
     document.getElementById('useridfield').textContent = data.context.userId;
     document.getElementById('utouidfield').textContent = data.context.utouId;
     document.getElementById('roomidfield').textContent = data.context.roomId;
     document.getElementById('groupidfield').textContent = data.context.groupId;
-    
+    userid = liff.getProfile().userId;
+    username = liff.getProfile().displayName;
 
     // work call
     document.getElementById('workbutton').addEventListener('click', function () {
-    document.getElementById("demo").innerHTML = "上班打卡"
+    worktype = "上班打卡"
     getLocation();
     });
     
     // offwork call
     document.getElementById('offworkbutton').addEventListener('click', function () {
-    document.getElementById("demo").innerHTML = "下班打卡"
+    worktype = "下班打卡"
     getLocation();
     });
 
@@ -112,15 +114,15 @@ function showPosition(position) {
     //let date = new Date(position.timestamp );
 
     //const profile = liff.getProfile();
-      alert(JSON.stringify(liff.getProfile()));
+      //alert(JSON.stringify(liff.getProfile()));
       bubble = 
       {        
         events:{
           type:"message",        
           message: {
-            type: document.getElementById("demo").textContent,
-            userid: "",
-            username: "",
+            type: worktype,
+            userid: userid,
+            username: username,
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
             timestamp: position.timestamp
@@ -142,7 +144,7 @@ function showPosition(position) {
   
   $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
     document.getElementById("map-link").innerHTML = document.getElementById("demo").textContent+"完成："+ latlon ;    
-    document.getElementById("demo").innerHTML = JSON.stringify(liff.getProfile());
+    //document.getElementById("demo").innerHTML = JSON.stringify(liff.getProfile());
 }
   
 function showError(error) {
