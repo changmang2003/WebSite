@@ -112,28 +112,28 @@ function showPosition(position) {
     //let date = new Date(position.timestamp );
 
     liff.getProfile().then(profile => {
-      const id = profile.userId;
-      const name = profile.displayName;
-    })
-    .catch((err) => {
-      console.log('error', err);
-    });
-  
-    bubble = 
+      
+      bubble = 
     {        
       events:{
         type:"message",        
         message: {
           type: document.getElementById("demo").textContent,
-          userid: id,
-          username: name,
+          userid: profile.userId,
+          username: profile.displayName,
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
           timestamp: position.timestamp
         }
       }    
-    };  
-    //document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
+    }; 
+    })
+    .catch((err) => {
+      console.log('error', err);
+    });
+  
+     
+    document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
   parameter = {
     url: "https://docs.google.com/spreadsheets/d/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI/edit#gid=0",
     name: "Location",
@@ -145,7 +145,7 @@ function showPosition(position) {
   
   $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
     document.getElementById("map-link").innerHTML = document.getElementById("demo").textContent+"完成："+ latlon ;    
-    document.getElementById("demo").innerHTML = name;
+    //document.getElementById("demo").innerHTML = name;
 }
   
 function showError(error) {
