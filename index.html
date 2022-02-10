@@ -28,12 +28,13 @@
             //ButtonGetProfile
             $('#ButtonGetProfile').click(function () {
                 //取得User Proile
+                alert(JSON.stringify(liff.getProfile()));
                 liff.getProfile().then(
                     profile=> {
                         //顯示在text box中
                         $('#UserInfo').val(profile.displayName);
                         //居然可以alert
-                        alert(JSON.stringify(profile));
+                        
                     }
                 );
             });
