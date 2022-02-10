@@ -118,6 +118,8 @@ function showPosition(position) {
         type:"message",        
         message: {
           type:document.getElementById("demo").textContent,
+          userid:profile.userId,
+          username:profile.displayName,
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
           timestamp: position.timestamp
