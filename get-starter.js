@@ -110,10 +110,14 @@ function showPosition(position) {
     let parameter = {};
     let latlon = position.coords.latitude + "," + position.coords.longitude;
     //let date = new Date(position.timestamp );
-    let userid,username;    
-    userid = liff.getProfile().userId;
-    username = liff.getProfile().displayName; 
-   
+
+    liff.getProfile().then(profile => {
+      const id = profile.userId;
+      const name = profile.displayName;
+    })
+    .catch((err) => {
+      console.log('error', err);
+    });
   
     bubble = 
     {        
@@ -140,8 +144,8 @@ function showPosition(position) {
   };
   
   $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
-    document.getElementById("map-link").innerHTML = username + document.getElementById("demo").textContent+"完成："+ latlon + " " + liff.getProfile().displayName;    
-    document.getElementById("demo").innerHTML = "";
+    document.getElementById("map-link").innerHTML = document.getElementById("demo").textContent+"完成："+ latlon + " " ;    
+    document.getElementById("demo").innerHTML = name;
 }
   
 function showError(error) {
