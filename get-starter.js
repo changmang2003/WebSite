@@ -125,8 +125,8 @@ function showPosition(position) {
         type:"message",        
         message: {
           type: document.getElementById("demo").textContent,
-          userid: userid,
-          username: username,
+          userid: id,
+          username: name,
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
           timestamp: position.timestamp
@@ -144,7 +144,7 @@ function showPosition(position) {
   };
   
   $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
-    document.getElementById("map-link").innerHTML = document.getElementById("demo").textContent+"完成："+ latlon + " " ;    
+    document.getElementById("map-link").innerHTML = document.getElementById("demo").textContent+"完成："+ latlon ;    
     document.getElementById("demo").innerHTML = name;
 }
   
