@@ -98,12 +98,12 @@ function getLocation() {
 
 function showPosition(position) {
 
-    const bubble = {};  
-    var getUrlString = location.href;
-    const url = new URL(getUrlString);  
-    const parameter = {};
-    const latlon = position.coords.latitude + "," + position.coords.longitude;
-    //const date = new Date(position.timestamp );    
+    let bubble = {};  
+    let getUrlString = location.href;
+    let url = new URL(getUrlString);  
+    let parameter = {};
+    let latlon = position.coords.latitude + "," + position.coords.longitude;
+    //let date = new Date(position.timestamp );    
 
   if (url.searchParams.get("punch")=="work"){
     bubble = 
@@ -144,9 +144,8 @@ function showPosition(position) {
   };
   
   $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
-    document.getElementById("map-link").innerHTML = "打卡完成："+ latlon;
-    //const ret= document.getElementById("map-link");
-    //document.getElementById("demo").innerHTML = ret.value;
+    document.getElementById("map-link").innerHTML = "打卡完成："+ latlon;    
+    document.getElementById("demo").innerHTML = document.getElementById("map-link").value;
 }
   
 function showError(error) {
