@@ -14,10 +14,16 @@ function initializeApp(data) {
     
 
     // work call
-    document.getElementById('workbutton').addEventListener('click', getLocation);
+    document.getElementById('workbutton').addEventListener('click', function () {
+    document.getElementById("demo").innerHTML = "上班打卡"
+    getLocation();
+    });
     
     // offwork call
-    document.getElementById('offworkbutton').addEventListener('click', getLocation);
+    document.getElementById('offworkbutton').addEventListener('click', function () {
+    document.getElementById("demo").innerHTML = "下班打卡"
+    getLocation();
+    });
 
     // closeWindow call
     document.getElementById('closewindowbutton').addEventListener('click', function () {
@@ -100,40 +106,25 @@ function showPosition(position) {
 
     let bubble = {};  
     let getUrlString = location.href;
-    let url = new URL(getUrlString);  
+    //let url = new URL(getUrlString);  
     let parameter = {};
     let latlon = position.coords.latitude + "," + position.coords.longitude;
     //let date = new Date(position.timestamp );    
 
-  if (url.searchParams.get("punch")=="work"){
+  
     bubble = 
     {        
       events:{
         type:"message",        
         message: {
-          type:"work",
+          type:document.getElementById("demo").textContent,
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
           timestamp: position.timestamp
         }
       }    
-    };
-  } else {
-     bubble = 
-    {            
-      events:{
-        type:"message",        
-        message: {
-          type:"outwork",
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-          timestamp: position.timestamp
-        }
-      }     
-    };
-  }
-  
-    document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
+    };  
+    //document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
   parameter = {
     url: "https://docs.google.com/spreadsheets/d/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI/edit#gid=0",
     name: "Location",
@@ -144,8 +135,8 @@ function showPosition(position) {
   };
   
   $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
-    document.getElementById("map-link").innerHTML = "打卡完成："+ latlon;    
-    document.getElementById("demo").innerHTML = document.getElementById("map-link").textContent;
+    document.getElementById("map-link").innerHTML = document.getElementById("demo").textContent+"完成："+ latlon;    
+    document.getElementById("demo").innerHTML = "";
 }
   
 function showError(error) {
