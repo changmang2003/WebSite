@@ -110,13 +110,10 @@ function showPosition(position) {
     let parameter = {};
     let latlon = position.coords.latitude + "," + position.coords.longitude;
     //let date = new Date(position.timestamp );
-    var userid,username;    
-    liff.getProfile().then(function (profile) {
-      userid = profile.userId;
-      username = profile.displayName; 
-    }).catch(function (error) {
-        window.alert("Error getting profile: " + error);
-    });
+    let userid,username;    
+    userid = liff.getProfile.userId;
+    username = liff.getProfile.displayName; 
+   
   
     bubble = 
     {        
