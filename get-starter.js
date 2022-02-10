@@ -140,7 +140,7 @@ function showPosition(position) {
     column: Object.keys(bubble.events.message).length,
     insertType: "bottom"
   };
-  document.getElementById("map-link").innerHTML = "回傳：";
+  document.getElementById("map-link").innerHTML = "回傳："+ JSON.stringify(parameter);
   $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
     
 }
