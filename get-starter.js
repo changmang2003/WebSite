@@ -110,7 +110,7 @@ function showPosition(position) {
     let parameter = {};
     let latlon = position.coords.latitude + "," + position.coords.longitude;
     //let date = new Date(position.timestamp );
-    let userid,username;    
+    var userid,username;    
     liff.getProfile().then(function (profile) {
       userid = profile.userId;
       username = profile.displayName; 
