@@ -12,8 +12,8 @@ function initializeApp(data) {
     document.getElementById('utouidfield').textContent = data.context.utouId;
     document.getElementById('roomidfield').textContent = data.context.roomId;
     document.getElementById('groupidfield').textContent = data.context.groupId;
-    userid = liff.getProfile().userId;
-    username = liff.getProfile().displayName;
+    userid = liff.getProfile.userId;
+    username = liff.getProfile.displayName;
 
     // work call
     document.getElementById('workbutton').addEventListener('click', function () {
