@@ -112,7 +112,7 @@ function showPosition(position) {
     //let date = new Date(position.timestamp );
 
     const profile = liff.getProfile();
-      
+      toggleProfileData();
       bubble = 
       {        
         events:{
