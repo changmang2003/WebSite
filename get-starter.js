@@ -98,12 +98,12 @@ function getLocation() {
 
 function showPosition(position) {
 
-    const bubble = {};  
-    const getUrlString = location.href;
-    const url = new URL(getUrlString);  
-    const parameter = {};
-    const latlon = position.coords.latitude + "," + position.coords.longitude;
-    const date = new Date(position.timestamp );    
+    var bubble = {};  
+    var getUrlString = location.href;
+    var url = new URL(getUrlString);  
+    var parameter = {};
+    var latlon = position.coords.latitude + "," + position.coords.longitude;
+    //const date = new Date(position.timestamp );    
 
   if (url.searchParams.get("punch")=="work"){
     bubble = 
