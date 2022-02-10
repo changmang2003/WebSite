@@ -13,8 +13,11 @@ function initializeApp(data) {
     document.getElementById('groupidfield').textContent = data.context.groupId;
     
 
-    // openWindow call
+    // work call
     document.getElementById('workbutton').addEventListener('click', getLocation);
+    
+    // offwork call
+    document.getElementById('offworkbutton').addEventListener('click', getLocation);
 
     // closeWindow call
     document.getElementById('closewindowbutton').addEventListener('click', function () {
