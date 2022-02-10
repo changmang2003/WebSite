@@ -109,17 +109,23 @@ function showPosition(position) {
     //let url = new URL(getUrlString);  
     let parameter = {};
     let latlon = position.coords.latitude + "," + position.coords.longitude;
-    //let date = new Date(position.timestamp );    
-
+    //let date = new Date(position.timestamp );
+    let userid,username;    
+    liff.getProfile().then(function (profile) {
+      userid = profile.userId;
+      username = profile.displayName; 
+    }).catch(function (error) {
+        window.alert("Error getting profile: " + error);
+    });
   
     bubble = 
     {        
       events:{
         type:"message",        
         message: {
-          type:document.getElementById("demo").textContent,
-          userid:profile.userId,
-          username:profile.displayName,
+          type: document.getElementById("demo").textContent,
+          userid: userid,
+          username: username,
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
           timestamp: position.timestamp
