@@ -106,26 +106,26 @@ function showPosition(position) {
   if (url.searchParams.get("punch")=="work"){
     bubble = 
     {        
-      "events":{
-        "type":"message",        
-        "message": {
-          "type":"work",
-          "latitude": position.coords.latitude,
-          "longitude": position.coords.longitude,
-          "timestamp": position.timestamp
+      events:{
+        type:"message",        
+        message: {
+          type:"work",
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          timestamp: position.timestamp
         }
       }    
     };
   } else {
      bubble = 
     {            
-      "events":{
-        "type":"message",        
-        "message": {
-          "type":"outwork",
-          "latitude": position.coords.latitude,
-          "longitude": position.coords.longitude,
-          "timestamp": position.timestamp
+      events:{
+        type:"message",        
+        message: {
+          type:"outwork",
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          timestamp: position.timestamp
         }
       }     
     };
@@ -134,8 +134,8 @@ function showPosition(position) {
     document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
   parameter = {
     url: "https://docs.google.com/spreadsheets/d/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI/edit#gid=0",
-    getname: "Location",
-    getdata: JSON.stringify(bubble),
+    name: "Location",
+    data: JSON.stringify(bubble),
     row: Object.keys(bubble).length,
     column: Object.keys(bubble.events.message).length,
     insertType: "bottom"
