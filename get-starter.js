@@ -133,7 +133,7 @@ function showPosition(position) {
     };
   }
   
-    //document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
+    document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
   parameter = {
     url: "https://docs.google.com/spreadsheets/d/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI/edit#gid=0",
     name: "Location",
