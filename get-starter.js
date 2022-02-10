@@ -145,7 +145,8 @@ function showPosition(position) {
   
   $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
     document.getElementById("map-link").innerHTML = "打卡完成："+ latlon;
-    document.getElementById("demo").innerHTML = document.getElementById("map-link").value;
+    const ret= document.getElementById("map-link");
+    document.getElementById("demo").innerHTML = ret.value;
 }
   
 function showError(error) {
