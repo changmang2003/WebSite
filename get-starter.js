@@ -5,7 +5,9 @@ window.onload = function (e) {
 };
 
 function initializeApp(data) {
-    var worktype,userid,username;
+    var worktype = "";
+    var userid = "";
+    var username ="";
     document.getElementById('languagefield').textContent = data.language;
     document.getElementById('viewtypefield').textContent = data.context.viewType;
     document.getElementById('useridfield').textContent = data.context.userId;
