@@ -21,8 +21,8 @@ function initializeApp(data) {
       .catch((err) => {
         console.log('error', err);
     });
-    window.alert("VAR:2.13 "+  name);
-    window.alert("VAR:2.14 "+  document.getElementById("linename").textContent); 
+    window.alert("VAR:2.15 "+  name);
+     
 
     // work call
     document.getElementById('workbutton').addEventListener('click', function () {
@@ -121,7 +121,7 @@ function showPosition(position) {
     let parameter = {};
     let latlon = position.coords.latitude + "," + position.coords.longitude;
     //let date = new Date(position.timestamp );
- 
+    window.alert("VAR:2.16 "+  name);
       bubble = 
       {        
         events:{
