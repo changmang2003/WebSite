@@ -16,13 +16,13 @@ function initializeApp(data) {
     liff.getProfile()
       .then(profile => {
         document.getElementById("linename").innerHTML = profile.displayName;
-        window.alert("VAR:2.19 "+  profile.displayName);
-        window.alert("VAR:2.20 "+  document.getElementById("linename").textContent);
+        window.alert("VAR:2.22 "+  profile.displayName);
+        window.alert("VAR:2.23 "+  document.getElementById("linename").textContent);
       })
       .catch((err) => {
         console.log('error', err);
     });
-    window.alert("VAR:2.21 "+  document.getElementById("linename").textContent);
+    window.alert("VAR:2.24 "+  document.getElementById("linename").textContent);
      
 
     // work call
@@ -129,8 +129,8 @@ function showPosition(position) {
           type:"message",        
           message: {
             type: document.getElementById("typework").textContent,
-            userid: "",
-            username: "",
+            userid: document.getElementById("lineid").textContent,
+            username: document.getElementById("linename").textContent,
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
             timestamp: position.timestamp
@@ -153,6 +153,7 @@ function showPosition(position) {
   $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
     document.getElementById("map-link").innerHTML = document.getElementById("typework").textContent+"完成："+ latlon ;    
     document.getElementById("typework").innerHTML = "";
+    document.getElementById("linename").innerHTML = "";
 }
   
 function showError(error) {
