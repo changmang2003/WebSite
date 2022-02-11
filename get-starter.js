@@ -5,32 +5,24 @@ window.onload = function (e) {
 };
 
 function initializeApp(data) {
-    var worktype = "";
-    var userid = "";
-    var username ="";
+    
     document.getElementById('languagefield').textContent = data.language;
     document.getElementById('viewtypefield').textContent = data.context.viewType;
     document.getElementById('useridfield').textContent = data.context.userId;
     document.getElementById('utouidfield').textContent = data.context.utouId;
     document.getElementById('roomidfield').textContent = data.context.roomId;
     document.getElementById('groupidfield').textContent = data.context.groupId;
-    //userid = liff.getProfile.userId;
-    //username = liff.getProfile.displayName;
+
 
     // work call
     document.getElementById('workbutton').addEventListener('click', function () {
-    worktype = "上班打卡"
-    liff.getProfile().then(function(profile) {
-    userid = profile.userid;
-    username = profile.username;
-    });
-    window.alert("VAR:2.1 " + username);
+    document.getElementById("demo").innerHTML = "上班打卡";    
     getLocation();
     });
     
     // offwork call
     document.getElementById('offworkbutton').addEventListener('click', function () {
-    worktype = "下班打卡"
+    document.getElementById("demo").innerHTML = "下班打卡";
     getLocation();
     });
 
@@ -120,14 +112,14 @@ function showPosition(position) {
     let latlon = position.coords.latitude + "," + position.coords.longitude;
     //let date = new Date(position.timestamp );
 
-    //const profile = liff.getProfile();
-      window.alert("VAR:2.2 "+username);
+    const profile = liff.getProfile();
+      window.alert("VAR:2.2 "+  profile);
       bubble = 
       {        
         events:{
           type:"message",        
           message: {
-            type: worktype,
+            type: document.getElementById("demo").textContent,
             userid: userid,
             username: username,
             latitude: position.coords.latitude,
