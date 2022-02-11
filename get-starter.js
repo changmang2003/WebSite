@@ -118,7 +118,7 @@ function showPosition(position) {
     };
     });
     
-      window.alert("VAR:2.4 "+  userdata.name);
+      
       bubble = 
       {        
         events:{
