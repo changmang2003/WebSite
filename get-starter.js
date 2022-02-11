@@ -111,8 +111,16 @@ function showPosition(position) {
     let parameter = {};
     let latlon = position.coords.latitude + "," + position.coords.longitude;
     //let date = new Date(position.timestamp );
-   
-    window.alert("VAR:2.8 "+  document.getElementById("lineid").textContent);  
+    liff.getProfile()
+    .then(profile => {
+      const name = profile.displayName;
+      document.getElementById("linename").innerHTML = profile.displayName;
+    })
+    .catch((err) => {
+      console.log('error', err);
+    });
+    window.alert("VAR:2.9 "+  name);
+    window.alert("VAR:2.10 "+  document.getElementById("linename").textContent);  
       bubble = 
       {        
         events:{
