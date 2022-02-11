@@ -104,7 +104,11 @@ function getLocation() {
 }
 
 function showPosition(position) {
-
+    var userdata = {
+      id : "",
+      name : ""
+    };
+    
     let bubble = {};  
     //let getUrlString = location.href;
     //let url = new URL(getUrlString);  
@@ -112,9 +116,8 @@ function showPosition(position) {
     let latlon = position.coords.latitude + "," + position.coords.longitude;
     //let date = new Date(position.timestamp );
     liff.getProfile().then(function(profile) {
-    var userdata = {
-      id : profile.userId,
-      name : profile.displayName  
+    userdata.id= profile.userId;
+    userdata.name=profile.displayName;  
     };
     window.alert("VAR:2.4 "+  userdata.name);
     });
