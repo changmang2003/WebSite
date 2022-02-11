@@ -13,19 +13,6 @@ function initializeApp(data) {
     document.getElementById('roomidfield').textContent = data.context.roomId;
     document.getElementById('groupidfield').textContent = data.context.groupId;
 
-    liff.getProfile()      
-    .catch((err) => {
-        console.log('error', err);
-    })
-    .then(profile => {
-        document.getElementById("lineid").innerHTML = profile.userId;
-        document.getElementById("linename").innerHTML = profile.displayName;
-        window.alert("VAR:3.0 " + document.getElementById("linename").textContent);
-        window.alert("VAR:3.1 " + profile.displayName);        
-    });
-    window.alert("VAR:3.2 " + document.getElementById("linename").textContent);
-     
-
     // work call
     document.getElementById('workbutton').addEventListener('click', function () {
     document.getElementById("typework").innerHTML = "上班打卡";    
@@ -123,37 +110,43 @@ function showPosition(position) {
     let parameter = {};
     let latlon = position.coords.latitude + "," + position.coords.longitude;
     //let date = new Date(position.timestamp );
+    liff.getProfile()      
+      .then(profile => {
+          document.getElementById("lineid").innerHTML = profile.userId;
+          document.getElementById("linename").innerHTML = profile.displayName;
+          bubble = 
+          {        
+            events:{
+              type:"message",        
+              message: {
+                type: document.getElementById("typework").textContent,
+                userid: profile.userId,
+                username: profile.displayName,
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude,
+                timestamp: position.timestamp
+              }
+            }    
+          };           
+         //document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
+          parameter = {
+            url: "https://docs.google.com/spreadsheets/d/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI/edit#gid=0",
+            name: "Location",
+            data: JSON.stringify(bubble),
+            row: Object.keys(bubble).length,
+            column: Object.keys(bubble.events.message).length,
+            insertType: "bottom"
+          };
+          
+          $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
+            document.getElementById("map-link").innerHTML = document.getElementById("typework").textContent+"完成："+ latlon ;    
+            document.getElementById("typework").innerHTML = "";
+      })    
+      .catch((err) => {
+          console.log('error', err);
+      });
     
-      bubble = 
-      {        
-        events:{
-          type:"message",        
-          message: {
-            type: document.getElementById("typework").textContent,
-            userid: document.getElementById("lineid").textContent,
-            username: document.getElementById("linename").textContent,
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-            timestamp: position.timestamp
-          }
-        }    
-      }; 
-    
-  
-     
-   //document.getElementById("map-link").innerHTML = JSON.stringify(bubble);
-  parameter = {
-    url: "https://docs.google.com/spreadsheets/d/1P2DOGsridwK4zMhwKw-Xokjgwht7FjuTs9Yf2XhN-aI/edit#gid=0",
-    name: "Location",
-    data: JSON.stringify(bubble),
-    row: Object.keys(bubble).length,
-    column: Object.keys(bubble.events.message).length,
-    insertType: "bottom"
-  };
-  
-  $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
-    document.getElementById("map-link").innerHTML = document.getElementById("typework").textContent+"完成："+ latlon ;    
-    document.getElementById("typework").innerHTML = "";
+
 }
   
 function showError(error) {
