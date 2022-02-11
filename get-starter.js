@@ -16,12 +16,13 @@ function initializeApp(data) {
     liff.getProfile()
       .then(profile => {
         document.getElementById("linename").innerHTML = profile.displayName;
-        
+        window.alert("VAR:2.19 "+  profile.displayName);
+        window.alert("VAR:2.20 "+  document.getElementById("linename").textContent);
       })
       .catch((err) => {
         console.log('error', err);
     });
-    window.alert("VAR:2.18 "+  document.getElementById("linename").textContent);
+    window.alert("VAR:2.21 "+  document.getElementById("linename").textContent);
      
 
     // work call
