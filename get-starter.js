@@ -117,7 +117,8 @@ function showPosition(position) {
     //let date = new Date(position.timestamp );
     liff.getProfile().then(function(profile) {
     userdata.id= profile.userId;
-    userdata.name=profile.displayName;  
+    userdata.name=profile.displayName;
+    console.log(userdata);  
     };
     window.alert("VAR:2.6 "+  userdata.name);
     });
