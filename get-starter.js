@@ -15,7 +15,7 @@ function initializeApp(data) {
 
     liff.getProfile()
       .then(profile => {
-        const name = profile.displayName
+        document.getElementById("linename").innerHTML = profile.displayName
         
       })
       .catch((err) => {
