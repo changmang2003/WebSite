@@ -118,7 +118,7 @@ function showPosition(position) {
     liff.getProfile().then(function(profile) {
     userdata.id= profile.userId;
     userdata.name=profile.displayName;
-    console.log(userdata);  
+    return userdata;  
     };
     window.alert("VAR:2.6 "+  userdata.name);
     });
