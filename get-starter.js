@@ -115,15 +115,8 @@ function showPosition(position) {
     let parameter = {};
     let latlon = position.coords.latitude + "," + position.coords.longitude;
     //let date = new Date(position.timestamp );
-    liff.getProfile().then(function(profile) {
-    userdata.id= profile.userId;
-    userdata.name=profile.displayName;
-    return userdata;  
-    };
-    window.alert("VAR:2.6 "+  userdata.name);
-    });
-    
-    window.alert("VAR:2.7 "+  userdata.name);  
+   
+    window.alert("VAR:2.8 "+  userdata.name);  
       bubble = 
       {        
         events:{
