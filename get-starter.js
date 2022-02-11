@@ -104,10 +104,6 @@ function getLocation() {
 }
 
 function showPosition(position) {
-    var userdata = {
-      id : "",
-      name : ""
-    };
     
     let bubble = {};  
     //let getUrlString = location.href;
@@ -116,7 +112,7 @@ function showPosition(position) {
     let latlon = position.coords.latitude + "," + position.coords.longitude;
     //let date = new Date(position.timestamp );
    
-    window.alert("VAR:2.8 "+  userdata.name);  
+    window.alert("VAR:2.8 "+  document.getElementById("lineid").textContent);  
       bubble = 
       {        
         events:{
