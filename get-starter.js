@@ -113,15 +113,15 @@ function showPosition(position) {
     //let date = new Date(position.timestamp );
 
     const profile = liff.getProfile();
-      window.alert("VAR:2.2 "+  profile);
+      window.alert("VAR:2.3 "+  JSON.stringify(profile));
       bubble = 
       {        
         events:{
           type:"message",        
           message: {
             type: document.getElementById("demo").textContent,
-            userid: userid,
-            username: username,
+            userid: "",
+            username: "",
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
             timestamp: position.timestamp
