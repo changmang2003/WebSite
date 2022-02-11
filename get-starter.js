@@ -21,8 +21,10 @@ function initializeApp(data) {
     document.getElementById('workbutton').addEventListener('click', function () {
     worktype = "上班打卡"
     liff.getProfile().then(function(profile) {
-    window.alert("VAR:1 " + profile.displayName);
+    userid = profile.userid;
+    username = profile.username;
     });
+    window.alert("VAR:2.1 " + username);
     getLocation();
     });
     
@@ -119,7 +121,7 @@ function showPosition(position) {
     //let date = new Date(position.timestamp );
 
     //const profile = liff.getProfile();
-      //alert(JSON.stringify(liff.getProfile()));
+      window.alert("VAR:2.2 "+username);
       bubble = 
       {        
         events:{
