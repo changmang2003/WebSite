@@ -14,12 +14,12 @@ function initializeApp(data) {
     document.getElementById('groupidfield').textContent = data.context.groupId;
 
     liff.getProfile()
-    .then(function (profile) {
-      const name = profile.displayName;
-      document.getElementById("linename").innerHTML = profile.displayName;
-    })
-    .catch((err) {
-      console.log('error', err);
+      .then(profile => {
+        const name = profile.displayName;
+        document.getElementById("linename").innerHTML = profile.displayName;
+      })
+      .catch((err) => {
+        console.log('error', err);
     });
     window.alert("VAR:2.13 "+  name);
     window.alert("VAR:2.14 "+  document.getElementById("linename").textContent); 
