@@ -13,15 +13,17 @@ function initializeApp(data) {
     document.getElementById('roomidfield').textContent = data.context.roomId;
     document.getElementById('groupidfield').textContent = data.context.groupId;
 
-    liff.getProfile()
-      .then(profile => {
-        document.getElementById("lineid").innerHTML = profile.userId;
-        document.getElementById("linename").innerHTML = profile.displayName;        
-      })
-      .catch((err) => {
+    liff.getProfile()      
+    .catch((err) => {
         console.log('error', err);
+    })
+    .then(profile => {
+        document.getElementById("lineid").innerHTML = profile.userId;
+        document.getElementById("linename").innerHTML = profile.displayName;
+        window.alert("VAR:3.0 " + document.getElementById("linename").textContent);
+        window.alert("VAR:3.1 " + profile.displayName);        
     });
-   
+    window.alert("VAR:3.2 " + document.getElementById("linename").textContent);
      
 
     // work call
@@ -152,8 +154,6 @@ function showPosition(position) {
   $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
     document.getElementById("map-link").innerHTML = document.getElementById("typework").textContent+"完成："+ latlon ;    
     document.getElementById("typework").innerHTML = "";
-    document.getElementById("lineid").innerHTML = "";
-    document.getElementById("linename").innerHTML = "";
 }
   
 function showError(error) {
