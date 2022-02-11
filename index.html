@@ -14,9 +14,9 @@
             //取得QueryString
             let urlParams = new URLSearchParams(window.location.search);
             //顯示QueryString
-            $('#QueryString').val(urlParams.toString());
+            document.getElementById('QueryString').textContent = urlParams.toString();
             //顯示UserId
-            $('#userid').val(data.context.userId);
+            document.getElementById('userid').textContent = data.context.userId;
         }
 
         //ready
