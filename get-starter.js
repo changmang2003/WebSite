@@ -13,6 +13,16 @@ function initializeApp(data) {
     document.getElementById('roomidfield').textContent = data.context.roomId;
     document.getElementById('groupidfield').textContent = data.context.groupId;
 
+    liff.getProfile()
+    .then(profile => {
+      const name = profile.displayName;
+      document.getElementById("linename").innerHTML = profile.displayName;
+    })
+    .catch((err) => {
+      console.log('error', err);
+    });
+    window.alert("VAR:2.11 "+  name);
+    window.alert("VAR:2.12 "+  document.getElementById("linename").textContent); 
 
     // work call
     document.getElementById('workbutton').addEventListener('click', function () {
@@ -111,16 +121,7 @@ function showPosition(position) {
     let parameter = {};
     let latlon = position.coords.latitude + "," + position.coords.longitude;
     //let date = new Date(position.timestamp );
-    liff.getProfile()
-    .then(profile => {
-      const name = profile.displayName;
-      document.getElementById("linename").innerHTML = profile.displayName;
-    })
-    .catch((err) => {
-      console.log('error', err);
-    });
-    window.alert("VAR:2.9 "+  name);
-    window.alert("VAR:2.10 "+  document.getElementById("linename").textContent);  
+ 
       bubble = 
       {        
         events:{
