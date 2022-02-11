@@ -116,9 +116,10 @@ function showPosition(position) {
       id : profile.userId,
       name : profile.displayName  
     };
+    window.alert("VAR:2.4 "+  userdata.name);
     });
     
-      
+    window.alert("VAR:2.5 "+  userdata.name);  
       bubble = 
       {        
         events:{
