@@ -18,8 +18,9 @@ function initializeApp(data) {
     // work call
     document.getElementById('workbutton').addEventListener('click', function () {
     worktype = "上班打卡"
-    var profile = liff.getProfile();
+    liff.getProfile().then(function(profile) {
     window.alert(profile.displayName);
+    });
     getLocation();
     });
     
