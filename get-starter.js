@@ -21,7 +21,7 @@ function initializeApp(data) {
       .catch((err) => {
         console.log('error', err);
     });
-    window.alert("VAR:2.15 "+  name);
+    window.alert("VAR:2.15 "+  document.getElementById("typework").textContent);
      
 
     // work call
