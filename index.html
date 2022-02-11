@@ -5,8 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>test LIFF</title>
     <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="test LIFF_files/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>   
     <link href="test LIFF_files/bootstrap.min.css" rel="stylesheet" />
     <script>
         //init LIFF
@@ -17,6 +16,7 @@
             document.getElementById('QueryString').textContent = urlParams.toString();
             //顯示UserId
             document.getElementById('userid').textContent = data.context.userId;
+            alert(data.context.userId);
         }
 
         //ready
