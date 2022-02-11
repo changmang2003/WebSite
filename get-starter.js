@@ -15,14 +15,13 @@ function initializeApp(data) {
 
     liff.getProfile()
       .then(profile => {
-        document.getElementById("linename").innerHTML = profile.displayName;
-        window.alert("VAR:2.22 "+  profile.displayName);
-        window.alert("VAR:2.23 "+  document.getElementById("linename").textContent);
+        document.getElementById("lineid").innerHTML = profile.userId;
+        document.getElementById("linename").innerHTML = profile.displayName;        
       })
       .catch((err) => {
         console.log('error', err);
     });
-    window.alert("VAR:2.24 "+  document.getElementById("linename").textContent);
+   
      
 
     // work call
@@ -122,7 +121,7 @@ function showPosition(position) {
     let parameter = {};
     let latlon = position.coords.latitude + "," + position.coords.longitude;
     //let date = new Date(position.timestamp );
-    //window.alert("VAR:2.16 "+  name);
+    
       bubble = 
       {        
         events:{
@@ -153,6 +152,7 @@ function showPosition(position) {
   $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
     document.getElementById("map-link").innerHTML = document.getElementById("typework").textContent+"完成："+ latlon ;    
     document.getElementById("typework").innerHTML = "";
+    document.getElementById("lineid").innerHTML = "";
     document.getElementById("linename").innerHTML = "";
 }
   
