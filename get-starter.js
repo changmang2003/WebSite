@@ -16,13 +16,13 @@ function initializeApp(data) {
 
     // work call
     document.getElementById('workbutton').addEventListener('click', function () {
-    document.getElementById("demo").innerHTML = "上班打卡";    
+    document.getElementById("typework").innerHTML = "上班打卡";    
     getLocation();
     });
     
     // offwork call
     document.getElementById('offworkbutton').addEventListener('click', function () {
-    document.getElementById("demo").innerHTML = "下班打卡";
+    document.getElementById("typework").innerHTML = "下班打卡";
     getLocation();
     });
 
@@ -126,7 +126,7 @@ function showPosition(position) {
         events:{
           type:"message",        
           message: {
-            type: document.getElementById("demo").textContent,
+            type: document.getElementById("typework").textContent,
             userid: "",
             username: "",
             latitude: position.coords.latitude,
@@ -149,8 +149,8 @@ function showPosition(position) {
   };
   
   $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
-    document.getElementById("map-link").innerHTML = document.getElementById("demo").textContent+"完成："+ latlon ;    
-    document.getElementById("demo").innerHTML = "";
+    document.getElementById("map-link").innerHTML = document.getElementById("typework").textContent+"完成："+ latlon ;    
+    document.getElementById("typework").innerHTML = "";
 }
   
 function showError(error) {
