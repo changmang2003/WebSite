@@ -122,8 +122,8 @@ function showPosition(position) {
                 type: document.getElementById("typework").textContent,
                 userid: profile.userId,
                 username: profile.displayName,
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude,
+                latitude: Math.round(position.coords.latitude*1000000)/100000,
+                longitude: Math.round(position.coords.longitude*1000000)/100000,
                 timestamp: position.timestamp
               }
             }    
