@@ -108,7 +108,7 @@ function showPosition(position) {
     //let getUrlString = location.href;
     //let url = new URL(getUrlString);  
     let parameter = {};
-    let latlon = Math.floor(position.coords.latitude*1000000)/1000000 + "," + Math.floor(position.coords.longitude*100000)/100000;
+    let latlon = roundDown(position.coords.latitude,6) + "," + roundDown(position.coords.longitude,6);
     //let date = new Date(position.timestamp );
     liff.getProfile()      
       .then(profile => {
