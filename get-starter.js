@@ -108,8 +108,11 @@ function showPosition(position) {
     //let getUrlString = location.href;
     //let url = new URL(getUrlString);  
     let parameter = {};
-    roundDown = function( num, decimal ) { return Math.floor( ( num + Number.EPSILON ) * Math.pow( 10, decimal ) ) / Math.pow( 10, decimal ); }
-    let latlon = roundDown(position.coords.latitude,6) + "," + roundDown(position.coords.longitude,6);
+    
+    //roundDown取小數第幾位無條件捨去
+    //roundDown = function( num, decimal ) { return Math.floor( ( num + Number.EPSILON ) * Math.pow( 10, decimal ) ) / Math.pow( 10, decimal ); }
+    
+    let latlon = position.coords.latitude + "," + position.coords.longitude;
     //let date = new Date(position.timestamp );
     liff.getProfile()      
       .then(profile => {
@@ -123,8 +126,8 @@ function showPosition(position) {
                 type: document.getElementById("typework").textContent,
                 userid: profile.userId,
                 username: profile.displayName,
-                latitude: roundDown(position.coords.latitude,6),
-                longitude: roundDown(position.coords.longitude,6),
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude,
                 timestamp: position.timestamp
               }
             }    
