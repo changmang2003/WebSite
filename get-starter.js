@@ -153,7 +153,7 @@ function showPosition(position) {
           $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
             sendmessage(profile.displayName,"",position.coords.latitude,position.coords.longitude);
             //window.alert($.session.get["type_work_session"]);
-            liff.closeWindow();
+            
             //document.getElementById("map-link").innerHTML = document.getElementById("typework").textContent+"完成："+ latlon ;    
             //document.getElementById("typework").innerHTML = "";
       })    
@@ -175,6 +175,7 @@ function sendmessage (title,address,latitude,longitude) {
             latitude: latitude,
             longitude: longitude
         }]).then(function () {
+          liff.closeWindow();
             //window.alert("Message sent");
         }).catch(function (error) {
             window.alert("Error sending message: " + error);
