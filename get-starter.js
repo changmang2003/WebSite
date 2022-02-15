@@ -15,7 +15,8 @@ function initializeApp(data) {
 
     // work call
     document.getElementById('workbutton').addEventListener('click', function () {
-    document.getElementById("typework").innerHTML = "上班打卡";    
+    document.getElementById("typework").innerHTML = "上班打卡";
+    //$('#typework').val("上班打卡");    
     getLocation();
     });
     
@@ -122,8 +123,7 @@ function showPosition(position) {
     //let date = new Date(position.timestamp );
     liff.getProfile()      
       .then(profile => {
-          document.getElementById("lineid").innerHTML = profile.userId;
-          document.getElementById("linename").innerHTML = profile.displayName;
+          
           bubble = 
           {        
             events:{
