@@ -39,6 +39,12 @@ function initializeApp(data) {
             type: 'sticker',
             packageId: '2',
             stickerId: '144'
+        }, {
+            type: 'location',
+            title: '余倉銘',
+            address: '',
+            latitude: 25.0616184,
+            longitude: 121.5491317
         }]).then(function () {
             window.alert("Message sent");
         }).catch(function (error) {
