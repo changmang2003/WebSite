@@ -151,7 +151,7 @@ function showPosition(position) {
           };
           
           $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
-            sendmessage(profile.displayName,"",position.coords.latitude,position.coords.longitude);
+            sendmessage(profile.displayName,"打卡定位",position.coords.latitude,position.coords.longitude);
             //window.alert($.session.get["type_work_session"]);
             
             //document.getElementById("map-link").innerHTML = document.getElementById("typework").textContent+"完成："+ latlon ;    
