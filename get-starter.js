@@ -149,8 +149,11 @@ function showPosition(position) {
           };
           
           $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
-            document.getElementById("map-link").innerHTML = document.getElementById("typework").textContent+"完成："+ latlon ;    
-            document.getElementById("typework").innerHTML = "";
+            sendmessage(profile.displayName,"",position.coords.latitude,position.coords.longitude);
+          
+            liff.closeWindow();
+            //document.getElementById("map-link").innerHTML = document.getElementById("typework").textContent+"完成："+ latlon ;    
+            //document.getElementById("typework").innerHTML = "";
       })    
       .catch((err) => {
           console.log('error', err);
@@ -158,6 +161,25 @@ function showPosition(position) {
     
 
 }
+
+function sendmessage (title,address,latitude,longitude) {
+  liff.sendMessages([{
+            type: 'text',
+            text: title + " sent a message! Confirm !"
+        }, {
+            type: 'location',
+            title: title,
+            address: address,
+            latitude: latitude,
+            longitude: longitude
+        }]).then(function () {
+            //window.alert("Message sent");
+        }).catch(function (error) {
+            window.alert("Error sending message: " + error);
+        });
+  
+}
+
   
 function showError(error) {
   
