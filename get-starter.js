@@ -17,7 +17,7 @@ function initializeApp(data) {
     document.getElementById('workbutton').addEventListener('click', function () {
     //document.getElementById("typework").innerHTML = "上班打卡";
     $.session.set("type_work_session", "上班打卡");
-    //$('#typework').val("上班打卡");    
+    $('#typework').val("上班打卡");    
     getLocation();
     });
     
