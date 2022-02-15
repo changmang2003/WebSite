@@ -32,7 +32,7 @@ img {
     display: none;
 }
 
-#accesstokendata, #profileinfo, #userdata {
+#accesstokendata, #profileinfo, #userdata, #testbutton {
     display: none;
 }
 
