@@ -125,7 +125,7 @@ function showPosition(position) {
     //let date = new Date(position.timestamp );
     liff.getProfile()      
       .then(profile => {
-          
+          window.alert($.session.get["type_work_session"]);
           bubble = 
           {        
             events:{
