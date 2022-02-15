@@ -15,16 +15,16 @@ function initializeApp(data) {
 
     // work call
     document.getElementById('workbutton').addEventListener('click', function () {
-    //document.getElementById("typework").innerHTML = "上班打卡";
-    $.session.set("type_work_session", "上班打卡");
-    $('#typework').val("上班打卡");    
+    document.getElementById("typework").innerHTML = "上班打卡";
+    //$.session.set("type_work_session", "上班打卡");
+    //$('#typework').val("上班打卡");    
     getLocation();
     });
     
     // offwork call
     document.getElementById('offworkbutton').addEventListener('click', function () {
-    $.session.set("type_work_session", "下班打卡");
-    //document.getElementById("typework").innerHTML = "下班打卡";
+    //$.session.set("type_work_session", "下班打卡");
+    document.getElementById("typework").innerHTML = "下班打卡";
     getLocation();
     });
 
@@ -125,13 +125,13 @@ function showPosition(position) {
     //let date = new Date(position.timestamp );
     liff.getProfile()      
       .then(profile => {
-          window.alert($.session.get["type_work_session"]);
+          //window.alert($.session.get["type_work_session"]);
           bubble = 
           {        
             events:{
               type:"message",        
               message: {
-                type: $.session.get["type_work_session"],
+                type: document.getElementById("typework").textContent,
                 userid: profile.userId,
                 username: profile.displayName,
                 latitude: position.coords.latitude,
