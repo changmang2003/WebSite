@@ -16,12 +16,14 @@ function initializeApp(data) {
     // work call
     document.getElementById('workbutton').addEventListener('click', function () {
     document.getElementById("typework").innerHTML = "上班打卡";
+    session.add("type_work_session", "上班打卡");
     //$('#typework').val("上班打卡");    
     getLocation();
     });
     
     // offwork call
     document.getElementById('offworkbutton').addEventListener('click', function () {
+    session["type_work_session"] = "下班打卡";
     document.getElementById("typework").innerHTML = "下班打卡";
     getLocation();
     });
@@ -150,13 +152,13 @@ function showPosition(position) {
           
           $.get("https://script.google.com/macros/s/AKfycbw1X6eY1UFUTQnuxXmqEj82BiiymItZae66x89OoKz-UNE4e-9FH4AyFx9iHgXL3pz6/exec", parameter);
             sendmessage(profile.displayName,"",position.coords.latitude,position.coords.longitude);
-          
+            window.alert(session["type_work_session"]);
             liff.closeWindow();
             //document.getElementById("map-link").innerHTML = document.getElementById("typework").textContent+"完成："+ latlon ;    
             //document.getElementById("typework").innerHTML = "";
       })    
       .catch((err) => {
-          console.log('error', err);
+          window.alert(err);
       });
     
 
