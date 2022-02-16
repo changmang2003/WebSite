@@ -166,9 +166,6 @@ function showPosition(position) {
 
 function sendmessage (title,address,latitude,longitude) {
   liff.sendMessages([{
-            type: 'text',
-            text: title + " sent a message! Confirm !"
-        }, {
             type: 'location',
             title: title,
             address: address,
